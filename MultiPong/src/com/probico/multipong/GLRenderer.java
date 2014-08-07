@@ -18,7 +18,8 @@ package com.probico.multipong;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.probico.multipong.common.RawResourceReader;
+import com.probico.multigoal.common.RawResourceReader;
+
 
 import android.content.Context;
 import android.opengl.GLES20;

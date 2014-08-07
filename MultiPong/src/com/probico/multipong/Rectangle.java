@@ -18,13 +18,12 @@ package com.probico.multipong;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
-
-import com.probico.multipong.common.TextureHelper;
 
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
+
+import com.probico.multigoal.common.TextureHelper;
 
 public class Rectangle {
 

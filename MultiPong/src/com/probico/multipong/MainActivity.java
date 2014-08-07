@@ -49,8 +49,7 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.probico.multipong.common.AppRater;
-import com.appszoom.appszoomsdk.AppsZoom;
+import com.probico.multigoal.common.AppRater;
 
 /**
  * Our main activity for the game.
