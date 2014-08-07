@@ -18,12 +18,12 @@ package net.probico.multigoal;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
 
-import net.probico.multigoal.common.TextureHelper;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
+
+import com.probico.multigoal.common.TextureHelper;
 
 public class Rectangle {
 
