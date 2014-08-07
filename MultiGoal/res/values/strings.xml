@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright (C) 2013 Google Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<resources>
+    <string name="signing_in">Signing in with Google</string>
+    <string name="signing_out">Signing out</string>
+    <string name="app_name">MultiPong</string>
+    <string name="title_activity_main">MultiPong</string>
+    <string name="single_player">one player</string>
+    <string name="two_players">two players</string>
+    <string name="two_players_online">online battle</string>
+    <string name="invitations">invitations</string>
+    <string name="signed_out_greeting"></string>
+    <string name="achievements_not_available">Please sign in to view achievements.</string>
+    <string name="leaderboards_not_available">Please sign in to view leaderboards.</string>
+    <string name="easy_mode_explanation">You\'re playing in easy mode, so you got the score you requested! Wasn\'t that easy?</string>
+    <string name="hard_mode_explanation">You\'re playing in hard mode, so you only got half the score you requested! Isn\'t this game hard?</string>
+    <string name="achievement_prime_toast_text">Prime score!</string>
+    <string name="achievement_arrogant_toast_text">Arrogant (requested maximum score)!</string>
+    <string name="achievement_humble_toast_text">Humble! (requested 0 score)</string>
+    <string name="achievement_leet_toast_text">L33t! (got 1337 score)</string>
+    <string name="achievement">Achievement</string>
+    <string name="your_progress_will_be_uploaded">Your existing achievements and score will be uploaded shortly.</string>
+    <string name="what_score_do_you_deserve">What score do you think you deserve?</string>
+    <string name="initial_input">0000</string>
+    <string name="digit0"> 0 </string>
+    <string name="digit1">1</string>
+    <string name="digit2">2</string>
+    <string name="digit3">3</string>
+    <string name="digit4">4</string>
+    <string name="digit5">5</string>
+    <string name="digit6">6</string>
+    <string name="digit7">7</string>
+    <string name="digit8">8</string>
+    <string name="digit9">9</string>
+    <string name="clear">Clear</string>
+    <string name="ok">OK</string>
+    <string name="choose_difficulty">Choose a difficulty to play:</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
+    <string name="see_your_progress">See your progress:</string>
+    <string name="show_achievements">Achievements</string>
+    <string name="show_leaderboards">Leaderboards</string>
+    <string name="sign_in_why">Sign in with Google.</string>
+    <string name="you_are_signed_in">You are signed in with Google.</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_in">Sign in</string>
+    <string name="you_win">You win! Your score is:</string>
+    <string name="sign_in_to_upload_this_score">Sign in now to upload this score, save your achievements and share your progress with friends.</string>
+    <string name="quick_start">Quick Start</string>
+    <string name="invite_players">Invite</string>
+    <string name="show_invitations">Invitations</string>
+    <string name="please_sign_in_message">Please, sign in to your Google+ account before using this feature</string>
+    <string name="new_match_prompt">Would you like to start a new match?</string>
+    <string name="new_match">New Match?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No, thanks</string>
+    <string name="game_cancelled_message">Game cancelled because other participant disconnected</string>
+    <string name="invitation_notification"> invited you to play Multipong. Would you like to accept their invitation?</string>
+    <string name="incoming_invitation">Incoming invitation</string>
+    <string name="not_now">Not now</string>
+	<string name="az_appkey">MY_AZ_APP_KEY</string>
+    
+</resources>
