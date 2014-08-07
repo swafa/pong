@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/backgroundpattern_space"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+<LinearLayout 
+    android:id="@+id/screen_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" 
+    android:padding="20dp" 
+    android:weightSum="1"
+    android:background="@drawable/zickzackwithgreen"
+    >
+
+
+<ImageView android:layout_width="wrap_content"
+    		android:layout_height="0dip"
+    		android:src="@drawable/logo"
+    		android:layout_weight="0.5"
+    		android:contentDescription="Multipong logo"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="0.25"
+            android:orientation="vertical" >
+
+        
+             <Button
+                android:id="@+id/easy_button"
+                android:text="@string/easy"
+                android:layout_marginTop="10dp" 
+                style="@style/ButtonStyle"
+                android:textColor="#05F600"
+                android:background="@drawable/button"
+                
+                />
+            
+             
+             <Button
+                android:id="@+id/hard_button"
+                android:layout_marginTop="10dp" 
+                style="@style/ButtonStyle"
+                android:background="@drawable/button"
+                android:textColor="#05F600"
+                android:text="@string/hard" />   			             
+             
+        </LinearLayout>
+        
+    </LinearLayout>
+</FrameLayout>
