@@ -23,7 +23,7 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import com.probico.multigoal.common.TextureHelper;
+import com.probico.multipong.common.TextureHelper;
 
 public class Rectangle {
 

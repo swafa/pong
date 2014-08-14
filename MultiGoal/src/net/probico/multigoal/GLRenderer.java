@@ -24,7 +24,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import com.probico.multigoal.common.RawResourceReader;
+import com.probico.multipong.common.RawResourceReader;
 
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
