@@ -18,15 +18,13 @@ package com.probico.multipong;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.probico.multigoal.common.RawResourceReader;
-
-
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
-import android.widget.TextView;
+
+import com.probico.multipong.common.RawResourceReader;
 
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
