@@ -1,4 +1,4 @@
-package com.probico.multipong.common;
+package net.probico.pong.common;
 
 import android.app.Dialog;
 import android.content.Context;
