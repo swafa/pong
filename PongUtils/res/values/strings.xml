@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="app_name">PongUtils</string>
+    <string name="single_player">one player</string>
+    <string name="two_players">two players</string>
+    <string name="two_players_online">online battle</string>
+	<string name="invitations">invitations</string>
+	<string name="sign_in_why">Sign in with Google.</string>
+	<string name="you_are_signed_in">You are signed in with Google.</string>
+	<string name="sign_out">Sign out</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
+    <string name="signed_out_greeting"></string>
+    <string name="please_sign_in_message">Please, sign in to your Google+ account before using this feature</string>
+    <string name="game_cancelled_message">Game cancelled because other participant disconnected</string>
+    <string name="new_match_prompt">Would you like to start a new match?</string>
+    <string name="new_match">New Match?</string>
+    <string name="no">No, thanks</string>
+    <string name="yes">Yes</string>
+    <string name="incoming_invitation">Incoming invitation</string>
+    <string name="not_now">Not now</string>
+</resources>

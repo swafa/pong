@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.probico.multipong;
+package com.example.pongutils;
 
 public final class R {
     public static final class attr {
@@ -21,7 +21,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adSize=0x7f010000;
+        public static int adSize=0x7f010000;
         /** 
     A comma-separated list of the supported ad sizes. The sizes must be one of
     BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
@@ -34,7 +34,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adSizes=0x7f010001;
+        public static int adSizes=0x7f010001;
         /**  The ad unit ID. 
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -43,7 +43,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int adUnitId=0x7f010002;
+        public static int adUnitId=0x7f010002;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -51,7 +51,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraBearing=0x7f010004;
+        public static int cameraBearing=0x7f010004;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -59,7 +59,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLat=0x7f010005;
+        public static int cameraTargetLat=0x7f010005;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -67,7 +67,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLng=0x7f010006;
+        public static int cameraTargetLng=0x7f010006;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -75,7 +75,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTilt=0x7f010007;
+        public static int cameraTilt=0x7f010007;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -83,7 +83,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraZoom=0x7f010008;
+        public static int cameraZoom=0x7f010008;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -97,7 +97,7 @@ containing a value of this type.
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int mapType=0x7f010003;
+        public static int mapType=0x7f010003;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -105,7 +105,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiCompass=0x7f010009;
+        public static int uiCompass=0x7f010009;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -113,7 +113,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiRotateGestures=0x7f01000a;
+        public static int uiRotateGestures=0x7f01000a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -121,7 +121,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiScrollGestures=0x7f01000b;
+        public static int uiScrollGestures=0x7f01000b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -129,7 +129,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiTiltGestures=0x7f01000c;
+        public static int uiTiltGestures=0x7f01000c;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -137,7 +137,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomControls=0x7f01000d;
+        public static int uiZoomControls=0x7f01000d;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -145,7 +145,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomGestures=0x7f01000e;
+        public static int uiZoomGestures=0x7f01000e;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -153,7 +153,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int useViewLifecycle=0x7f01000f;
+        public static int useViewLifecycle=0x7f01000f;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -161,297 +161,218 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int zOrderOnTop=0x7f010010;
-    }
-    public static final class bool {
-        public static final int az_debug=0x7f0a0000;
+        public static int zOrderOnTop=0x7f010010;
     }
     public static final class color {
-        public static final int common_action_bar_splitter=0x7f070009;
+        public static int common_action_bar_splitter=0x7f050009;
         /**  Sign-in Button Colors 
          */
-        public static final int common_signin_btn_dark_text_default=0x7f070000;
-        public static final int common_signin_btn_dark_text_disabled=0x7f070002;
-        public static final int common_signin_btn_dark_text_focused=0x7f070003;
-        public static final int common_signin_btn_dark_text_pressed=0x7f070001;
-        public static final int common_signin_btn_default_background=0x7f070008;
-        public static final int common_signin_btn_light_text_default=0x7f070004;
-        public static final int common_signin_btn_light_text_disabled=0x7f070006;
-        public static final int common_signin_btn_light_text_focused=0x7f070007;
-        public static final int common_signin_btn_light_text_pressed=0x7f070005;
-        public static final int common_signin_btn_text_dark=0x7f07000c;
-        public static final int common_signin_btn_text_light=0x7f07000d;
-        public static final int pink=0x7f07000a;
-        public static final int red=0x7f07000b;
+        public static int common_signin_btn_dark_text_default=0x7f050000;
+        public static int common_signin_btn_dark_text_disabled=0x7f050002;
+        public static int common_signin_btn_dark_text_focused=0x7f050003;
+        public static int common_signin_btn_dark_text_pressed=0x7f050001;
+        public static int common_signin_btn_default_background=0x7f050008;
+        public static int common_signin_btn_light_text_default=0x7f050004;
+        public static int common_signin_btn_light_text_disabled=0x7f050006;
+        public static int common_signin_btn_light_text_focused=0x7f050007;
+        public static int common_signin_btn_light_text_pressed=0x7f050005;
+        public static int common_signin_btn_text_dark=0x7f05000d;
+        public static int common_signin_btn_text_light=0x7f05000e;
+        public static int pink=0x7f05000a;
+        public static int red=0x7f05000b;
+        public static int white=0x7f05000c;
     }
     public static final class drawable {
-        public static final int backgroundpattern_space=0x7f020000;
-        public static final int button=0x7f020001;
-        public static final int button_beta=0x7f020002;
-        public static final int common_signin_btn_icon_dark=0x7f020003;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f020004;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020005;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020006;
-        public static final int common_signin_btn_icon_disabled_light=0x7f020007;
-        public static final int common_signin_btn_icon_focus_dark=0x7f020008;
-        public static final int common_signin_btn_icon_focus_light=0x7f020009;
-        public static final int common_signin_btn_icon_light=0x7f02000a;
-        public static final int common_signin_btn_icon_normal_dark=0x7f02000b;
-        public static final int common_signin_btn_icon_normal_light=0x7f02000c;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f02000d;
-        public static final int common_signin_btn_icon_pressed_light=0x7f02000e;
-        public static final int common_signin_btn_text_dark=0x7f02000f;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020010;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020011;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f020012;
-        public static final int common_signin_btn_text_disabled_light=0x7f020013;
-        public static final int common_signin_btn_text_focus_dark=0x7f020014;
-        public static final int common_signin_btn_text_focus_light=0x7f020015;
-        public static final int common_signin_btn_text_light=0x7f020016;
-        public static final int common_signin_btn_text_normal_dark=0x7f020017;
-        public static final int common_signin_btn_text_normal_light=0x7f020018;
-        public static final int common_signin_btn_text_pressed_dark=0x7f020019;
-        public static final int common_signin_btn_text_pressed_light=0x7f02001a;
-        public static final int ic_launcher=0x7f02001b;
-        public static final int ic_plusone_medium_off_client=0x7f02001c;
-        public static final int ic_plusone_small_off_client=0x7f02001d;
-        public static final int ic_plusone_standard_off_client=0x7f02001e;
-        public static final int ic_plusone_tall_off_client=0x7f02001f;
-        public static final int launching_icon=0x7f020020;
-        public static final int logo=0x7f020021;
-        public static final int logo_beta=0x7f020022;
-        public static final int paddle_green=0x7f020023;
-        public static final int zickzackwithgreen=0x7f020024;
+        public static int common_signin_btn_icon_dark=0x7f020000;
+        public static int common_signin_btn_icon_disabled_dark=0x7f020001;
+        public static int common_signin_btn_icon_disabled_focus_dark=0x7f020002;
+        public static int common_signin_btn_icon_disabled_focus_light=0x7f020003;
+        public static int common_signin_btn_icon_disabled_light=0x7f020004;
+        public static int common_signin_btn_icon_focus_dark=0x7f020005;
+        public static int common_signin_btn_icon_focus_light=0x7f020006;
+        public static int common_signin_btn_icon_light=0x7f020007;
+        public static int common_signin_btn_icon_normal_dark=0x7f020008;
+        public static int common_signin_btn_icon_normal_light=0x7f020009;
+        public static int common_signin_btn_icon_pressed_dark=0x7f02000a;
+        public static int common_signin_btn_icon_pressed_light=0x7f02000b;
+        public static int common_signin_btn_text_dark=0x7f02000c;
+        public static int common_signin_btn_text_disabled_dark=0x7f02000d;
+        public static int common_signin_btn_text_disabled_focus_dark=0x7f02000e;
+        public static int common_signin_btn_text_disabled_focus_light=0x7f02000f;
+        public static int common_signin_btn_text_disabled_light=0x7f020010;
+        public static int common_signin_btn_text_focus_dark=0x7f020011;
+        public static int common_signin_btn_text_focus_light=0x7f020012;
+        public static int common_signin_btn_text_light=0x7f020013;
+        public static int common_signin_btn_text_normal_dark=0x7f020014;
+        public static int common_signin_btn_text_normal_light=0x7f020015;
+        public static int common_signin_btn_text_pressed_dark=0x7f020016;
+        public static int common_signin_btn_text_pressed_light=0x7f020017;
+        public static int ic_launcher=0x7f020018;
+        public static int ic_plusone_medium_off_client=0x7f020019;
+        public static int ic_plusone_small_off_client=0x7f02001a;
+        public static int ic_plusone_standard_off_client=0x7f02001b;
+        public static int ic_plusone_tall_off_client=0x7f02001c;
     }
     public static final class id {
-        public static final int easy_button=0x7f080008;
-        public static final int fragment_container=0x7f080005;
-        public static final int hard_button=0x7f080009;
-        public static final int hello=0x7f08000a;
-        public static final int hybrid=0x7f080004;
-        public static final int invitations_button=0x7f08000e;
-        public static final int none=0x7f080000;
-        public static final int normal=0x7f080001;
-        public static final int satellite=0x7f080002;
-        public static final int score_display=0x7f080014;
-        public static final int scoreblurb=0x7f080015;
-        public static final int screen_gameplay=0x7f080006;
-        public static final int screen_menu=0x7f080007;
-        public static final int screen_win=0x7f080013;
-        public static final int sign_in_bar=0x7f08000f;
-        public static final int sign_in_button=0x7f080010;
-        public static final int sign_out_bar=0x7f080011;
-        public static final int sign_out_button=0x7f080012;
-        public static final int single_player_button=0x7f08000b;
-        public static final int terrain=0x7f080003;
-        public static final int two_players_button=0x7f08000c;
-        public static final int two_players_online_button=0x7f08000d;
-        public static final int win_ok_button=0x7f080016;
-        public static final int win_screen_sign_in_bar=0x7f080017;
-        public static final int win_screen_sign_in_button=0x7f080018;
-        public static final int win_screen_signed_in_bar=0x7f080019;
+        public static int easy_button=0x7f060008;
+        public static int fragment_container=0x7f060005;
+        public static int hard_button=0x7f060009;
+        public static int hello=0x7f06000a;
+        public static int hybrid=0x7f060004;
+        public static int invitations_button=0x7f06000e;
+        public static int none=0x7f060000;
+        public static int normal=0x7f060001;
+        public static int satellite=0x7f060002;
+        public static int screen_gameplay=0x7f060006;
+        public static int screen_menu=0x7f060007;
+        public static int sign_in_bar=0x7f06000f;
+        public static int sign_in_button=0x7f060010;
+        public static int sign_out_bar=0x7f060011;
+        public static int sign_out_button=0x7f060012;
+        public static int single_player_button=0x7f06000b;
+        public static int terrain=0x7f060003;
+        public static int two_players_button=0x7f06000c;
+        public static int two_players_online_button=0x7f06000d;
     }
     public static final class integer {
-        public static final int google_play_services_version=0x7f090000;
+        public static int google_play_services_version=0x7f080000;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int fragment_gameplay=0x7f030001;
-        public static final int fragment_level_selection=0x7f030002;
-        public static final int fragment_mainmenu=0x7f030003;
-        public static final int fragment_win=0x7f030004;
+        public static int activity_main=0x7f030000;
+        public static int fragment_gameplay=0x7f030001;
+        public static int fragment_level_selection=0x7f030002;
+        public static int fragment_mainmenu=0x7f030003;
     }
     public static final class raw {
-        public static final int blop=0x7f040000;
-        public static final int per_pixel_fragment_shader=0x7f040001;
-        public static final int per_pixel_vertex_shader=0x7f040002;
-        public static final int pong=0x7f040003;
+        public static int blop=0x7f040000;
+        public static int per_pixel_fragment_shader=0x7f040001;
+        public static int per_pixel_vertex_shader=0x7f040002;
+        public static int pong=0x7f040003;
     }
     public static final class string {
-        public static final int achievement=0x7f050039;
-        public static final int achievement_arrogant=0x7f050025;
-        public static final int achievement_arrogant_toast_text=0x7f050036;
-        public static final int achievement_bored=0x7f050023;
-        public static final int achievement_humble=0x7f050024;
-        public static final int achievement_humble_toast_text=0x7f050037;
-        public static final int achievement_leet=0x7f050026;
-        public static final int achievement_leet_toast_text=0x7f050038;
-        /**  TODO: Replace these by your achievement/leaderboard IDs! 
-         */
-        public static final int achievement_prime=0x7f050021;
-        public static final int achievement_prime_toast_text=0x7f050035;
-        public static final int achievement_really_bored=0x7f050022;
-        public static final int achievements_not_available=0x7f050031;
-        /**  TODO: Replace this by your app's app ID! 
-         */
-        public static final int app_id=0x7f050020;
-        public static final int app_name=0x7f050000;
+        public static int app_name=0x7f07001f;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_enabling_title=0x7f050016;
+        public static int auth_client_needs_enabling_title=0x7f070015;
         /**   Title for notification shown when GooglePlayServices needs to be
         installed for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_installation_title=0x7f050017;
+        public static int auth_client_needs_installation_title=0x7f070016;
         /**   Title for notification shown when GooglePlayServices needs to be
         udpated for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_update_title=0x7f050018;
+        public static int auth_client_needs_update_title=0x7f070017;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f050019;
+        public static int auth_client_play_services_err_notification_msg=0x7f070018;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f05001a;
+        public static int auth_client_requested_by_msg=0x7f070019;
         /**   Title for notification shown when a bad version of GooglePlayServices
         has been installed and needs correction for an application to work.
         [CHAR LIMIT=70] 
          */
-        public static final int auth_client_using_bad_version_title=0x7f050015;
-        public static final int az_appkey=0x7f050061;
-        public static final int choose_difficulty=0x7f050049;
-        public static final int clear=0x7f050047;
+        public static int auth_client_using_bad_version_title=0x7f070014;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_button=0x7f050007;
+        public static int common_google_play_services_enable_button=0x7f070006;
         /**  Message in confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_enable_text=0x7f050006;
+        public static int common_google_play_services_enable_text=0x7f070005;
         /**  Title of confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_title=0x7f050005;
+        public static int common_google_play_services_enable_title=0x7f070004;
         /**  Button in confirmation dialog for installing Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_button=0x7f050004;
+        public static int common_google_play_services_install_button=0x7f070003;
         /**  (For phones) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_phone=0x7f050002;
+        public static int common_google_play_services_install_text_phone=0x7f070001;
         /**  (For tablets) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_tablet=0x7f050003;
+        public static int common_google_play_services_install_text_tablet=0x7f070002;
         /**  Title of confirmation dialog informing user that they need to install
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_title=0x7f050001;
+        public static int common_google_play_services_install_title=0x7f070000;
         /**  Message in confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_invalid_account_text=0x7f05000d;
+        public static int common_google_play_services_invalid_account_text=0x7f07000c;
         /**  Title of confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_invalid_account_title=0x7f05000c;
+        public static int common_google_play_services_invalid_account_title=0x7f07000b;
         /**  Message in confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_network_error_text=0x7f05000b;
+        public static int common_google_play_services_network_error_text=0x7f07000a;
         /**  Title of confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_network_error_title=0x7f05000a;
+        public static int common_google_play_services_network_error_title=0x7f070009;
         /**  Message in confirmation dialog informing user there is an unknown issue in Google Play
         services [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unknown_issue=0x7f05000e;
+        public static int common_google_play_services_unknown_issue=0x7f07000d;
         /**  Message in confirmation dialog informing user that date on the device is not correct,
     causing certificate checks to fail. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_date_text=0x7f050011;
+        public static int common_google_play_services_unsupported_date_text=0x7f070010;
         /**  Message in confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_text=0x7f050010;
+        public static int common_google_play_services_unsupported_text=0x7f07000f;
         /**  Title of confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_unsupported_title=0x7f05000f;
+        public static int common_google_play_services_unsupported_title=0x7f07000e;
         /**  Button in confirmation dialog for updating Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_button=0x7f050012;
+        public static int common_google_play_services_update_button=0x7f070011;
         /**  Message in confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_update_text=0x7f050009;
+        public static int common_google_play_services_update_text=0x7f070008;
         /**  Title of confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_title=0x7f050008;
+        public static int common_google_play_services_update_title=0x7f070007;
         /**  Sign-in button text [CHAR LIMIT=15] 
          */
-        public static final int common_signin_button_text=0x7f050013;
+        public static int common_signin_button_text=0x7f070012;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
-        public static final int common_signin_button_text_long=0x7f050014;
-        public static final int digit0=0x7f05003d;
-        public static final int digit1=0x7f05003e;
-        public static final int digit2=0x7f05003f;
-        public static final int digit3=0x7f050040;
-        public static final int digit4=0x7f050041;
-        public static final int digit5=0x7f050042;
-        public static final int digit6=0x7f050043;
-        public static final int digit7=0x7f050044;
-        public static final int digit8=0x7f050045;
-        public static final int digit9=0x7f050046;
-        public static final int easy=0x7f05004a;
-        public static final int easy_mode_explanation=0x7f050033;
-        public static final int game_cancelled_message=0x7f05005d;
-        public static final int gamehelper_app_misconfigured=0x7f05001d;
-        public static final int gamehelper_license_failed=0x7f05001e;
-        public static final int gamehelper_sign_in_failed=0x7f05001c;
-        public static final int gamehelper_unknown_error=0x7f05001f;
-        public static final int hard=0x7f05004b;
-        public static final int hard_mode_explanation=0x7f050034;
-        public static final int incoming_invitation=0x7f05005f;
-        public static final int initial_input=0x7f05003c;
-        public static final int invitation_notification=0x7f05005e;
-        public static final int invitations=0x7f05002f;
-        public static final int invite_players=0x7f050056;
-        public static final int leaderboard_easy=0x7f050027;
-        public static final int leaderboard_hard=0x7f050028;
-        public static final int leaderboards_not_available=0x7f050032;
+        public static int common_signin_button_text_long=0x7f070013;
+        public static int easy=0x7f070027;
+        public static int game_cancelled_message=0x7f07002b;
+        public static int gamehelper_app_misconfigured=0x7f07001c;
+        public static int gamehelper_license_failed=0x7f07001d;
+        public static int gamehelper_sign_in_failed=0x7f07001b;
+        public static int gamehelper_unknown_error=0x7f07001e;
+        public static int hard=0x7f070028;
+        public static int incoming_invitation=0x7f070030;
+        public static int invitations=0x7f070023;
         /**  Location client code resources (prefix with location_client) 
          */
-        public static final int location_client_powered_by_google=0x7f05001b;
-        public static final int new_match=0x7f05005a;
-        public static final int new_match_prompt=0x7f050059;
-        public static final int no=0x7f05005c;
-        public static final int not_now=0x7f050060;
-        public static final int ok=0x7f050048;
-        public static final int please_sign_in_message=0x7f050058;
-        public static final int quick_start=0x7f050055;
-        public static final int see_your_progress=0x7f05004c;
-        public static final int show_achievements=0x7f05004d;
-        public static final int show_invitations=0x7f050057;
-        public static final int show_leaderboards=0x7f05004e;
-        public static final int sign_in=0x7f050052;
-        public static final int sign_in_to_upload_this_score=0x7f050054;
-        public static final int sign_in_why=0x7f05004f;
-        public static final int sign_out=0x7f050051;
-        public static final int signed_out_greeting=0x7f050030;
-        public static final int signing_in=0x7f050029;
-        public static final int signing_out=0x7f05002a;
-        public static final int single_player=0x7f05002c;
-        public static final int title_activity_main=0x7f05002b;
-        public static final int two_players=0x7f05002d;
-        public static final int two_players_online=0x7f05002e;
-        public static final int what_score_do_you_deserve=0x7f05003b;
-        public static final int yes=0x7f05005b;
-        public static final int you_are_signed_in=0x7f050050;
-        public static final int you_win=0x7f050053;
-        public static final int your_progress_will_be_uploaded=0x7f05003a;
+        public static int location_client_powered_by_google=0x7f07001a;
+        public static int new_match=0x7f07002d;
+        public static int new_match_prompt=0x7f07002c;
+        public static int no=0x7f07002e;
+        public static int not_now=0x7f070031;
+        public static int please_sign_in_message=0x7f07002a;
+        public static int sign_in_why=0x7f070024;
+        public static int sign_out=0x7f070026;
+        public static int signed_out_greeting=0x7f070029;
+        public static int single_player=0x7f070020;
+        public static int two_players=0x7f070021;
+        public static int two_players_online=0x7f070022;
+        public static int yes=0x7f07002f;
+        public static int you_are_signed_in=0x7f070025;
     }
     public static final class style {
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
@@ -463,37 +384,34 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
-        /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
-         */
-        public static final int AppTheme=0x7f060001;
-        public static final int ButtonStyle=0x7f060002;
+        public static int AppBaseTheme=0x7f090002;
+        public static int AppTheme=0x7f090000;
+        public static int ButtonStyle=0x7f090001;
         /**  different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  
          */
-        public static final int LargeTextStyle=0x7f060004;
+        public static int LargeTextStyle=0x7f090004;
         /**  different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  
          */
-        public static final int MediumTextStyle=0x7f060005;
-        public static final int SmallButtonStyle=0x7f060007;
+        public static int MediumTextStyle=0x7f090005;
+        public static int SmallButtonStyle=0x7f090007;
         /**  different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  
          */
-        public static final int SmallTextStyle=0x7f060006;
+        public static int SmallTextStyle=0x7f090006;
         /**  different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  
          */
-        public static final int XLargeTextStyle=0x7f060003;
+        public static int XLargeTextStyle=0x7f090003;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
@@ -502,11 +420,11 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AdsAttrs_adSize com.probico.multipong:adSize}</code></td><td>
+           <tr><td><code>{@link #AdsAttrs_adSize com.example.pongutils:adSize}</code></td><td>
     The size of the ad.</td></tr>
-           <tr><td><code>{@link #AdsAttrs_adSizes com.probico.multipong:adSizes}</code></td><td>
+           <tr><td><code>{@link #AdsAttrs_adSizes com.example.pongutils:adSizes}</code></td><td>
     A comma-separated list of the supported ad sizes.</td></tr>
-           <tr><td><code>{@link #AdsAttrs_adUnitId com.probico.multipong:adUnitId}</code></td><td> The ad unit ID.</td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId com.example.pongutils:adUnitId}</code></td><td> The ad unit ID.</td></tr>
            </table>
            @see #AdsAttrs_adSize
            @see #AdsAttrs_adSizes
@@ -532,7 +450,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.probico.multipong:adSize
+          @attr name com.example.pongutils:adSize
         */
         public static final int AdsAttrs_adSize = 0;
         /**
@@ -552,7 +470,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.probico.multipong:adSizes
+          @attr name com.example.pongutils:adSizes
         */
         public static final int AdsAttrs_adSizes = 1;
         /**
@@ -568,7 +486,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name com.probico.multipong:adUnitId
+          @attr name com.example.pongutils:adUnitId
         */
         public static final int AdsAttrs_adUnitId = 2;
         /** Attributes that can be used with a MapAttrs.
@@ -577,20 +495,20 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing com.probico.multipong:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.probico.multipong:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.probico.multipong:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt com.probico.multipong:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom com.probico.multipong:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType com.probico.multipong:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass com.probico.multipong:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.probico.multipong:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.probico.multipong:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.probico.multipong:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls com.probico.multipong:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.probico.multipong:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.probico.multipong:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.probico.multipong:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing com.example.pongutils:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.example.pongutils:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.example.pongutils:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt com.example.pongutils:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom com.example.pongutils:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType com.example.pongutils:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass com.example.pongutils:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.example.pongutils:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.example.pongutils:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.example.pongutils:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls com.example.pongutils:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.example.pongutils:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.example.pongutils:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.example.pongutils:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -614,7 +532,7 @@ containing a value of this type.
             0x7f01000f, 0x7f010010
         };
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -624,11 +542,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:cameraBearing
+          @attr name com.example.pongutils:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -638,11 +556,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:cameraTargetLat
+          @attr name com.example.pongutils:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -652,11 +570,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:cameraTargetLng
+          @attr name com.example.pongutils:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -666,11 +584,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:cameraTilt
+          @attr name com.example.pongutils:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -680,11 +598,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:cameraZoom
+          @attr name com.example.pongutils:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#mapType}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -700,11 +618,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name com.probico.multipong:mapType
+          @attr name com.example.pongutils:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -714,11 +632,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiCompass
+          @attr name com.example.pongutils:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -728,11 +646,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiRotateGestures
+          @attr name com.example.pongutils:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -742,11 +660,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiScrollGestures
+          @attr name com.example.pongutils:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -756,11 +674,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiTiltGestures
+          @attr name com.example.pongutils:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -770,11 +688,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiZoomControls
+          @attr name com.example.pongutils:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -784,11 +702,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:uiZoomGestures
+          @attr name com.example.pongutils:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -798,11 +716,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:useViewLifecycle
+          @attr name com.example.pongutils:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
-          <p>This symbol is the offset where the {@link com.probico.multipong.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link com.example.pongutils.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -812,7 +730,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.probico.multipong:zOrderOnTop
+          @attr name com.example.pongutils:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };
