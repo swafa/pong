@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.probico.multipong;
+package com.probico.multipong.opengl;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -24,7 +24,14 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
+import com.probico.multipong.MainActivity;
+import com.probico.multipong.R;
+import com.probico.multipong.R.drawable;
+import com.probico.multipong.R.raw;
 import com.probico.multipong.common.RawResourceReader;
+import com.probico.multipong.shape.Circle;
+import com.probico.multipong.shape.Line;
+import com.probico.multipong.shape.Rectangle;
 
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
@@ -35,7 +42,7 @@ import com.probico.multipong.common.RawResourceReader;
  * <li>{@link android.opengl.GLSurfaceView.Renderer#onSurfaceChanged}</li>
  * </ul>
  */
-public class GLRenderer implements GLSurfaceView.Renderer {
+public class PongGLRenderer implements GLSurfaceView.Renderer {
 
 	private float widthToHeightRatio;
 	
@@ -47,7 +54,7 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 
 	private boolean secondRender = false;
 	private float screenWidth;
-	private static final String TAG = "GLRenderer";
+	private static final String TAG = "PongGLRenderer";
 	// private Triangle mTriangle;
 	private Rectangle bottomPaddle;
 	private Context context;
@@ -66,7 +73,7 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 	
 	final static float CENTER_TO_VERTICAL_EDGE = 2.4f;
 
-	public GLRenderer(Context context) {
+	public PongGLRenderer(Context context) {
 		this.context = context;
 		if (context instanceof MainActivity) {
 			activity = (MainActivity) context;
@@ -254,12 +261,12 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 	}
 
 	
-	protected String getVertexShader()
+	public String getVertexShader()
 	{
 		return RawResourceReader.readTextFileFromRawResource(context, R.raw.per_pixel_vertex_shader);
 	}
 	
-	protected String getFragmentShader()
+	public String getFragmentShader()
 	{
 		return RawResourceReader.readTextFileFromRawResource(context, R.raw.per_pixel_fragment_shader);
 	}
@@ -297,7 +304,7 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 	 * 
 	 * <pre>
 	 * mColorHandle = GLES20.glGetUniformLocation(mProgram, &quot;vColor&quot;);
-	 * GLRenderer.checkGlError(&quot;glGetUniformLocation&quot;);
+	 * PongGLRenderer.checkGlError(&quot;glGetUniformLocation&quot;);
 	 * </pre>
 	 * 
 	 * If the operation is not successful, the check throws an error.

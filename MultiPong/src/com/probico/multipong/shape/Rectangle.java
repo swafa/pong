@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.probico.multipong;
+package com.probico.multipong.shape;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -24,6 +24,7 @@ import android.opengl.Matrix;
 import android.util.Log;
 
 import com.probico.multipong.common.TextureHelper;
+import com.probico.multipong.opengl.PongGLRenderer;
 
 public class Rectangle {
 
@@ -31,7 +32,7 @@ public class Rectangle {
 
 	private float xTranslateValue = 0;
 
-	private GLRenderer gameRenderer;
+	private PongGLRenderer gameRenderer;
 
 	private final FloatBuffer mCubeTextureCoordinates;
 
@@ -113,7 +114,7 @@ public class Rectangle {
 	/**
 	 * Sets up the drawing object data for use in an OpenGL ES context.
 	 */
-	public Rectangle(GLRenderer gameRenderer, float vertices[], int textureId, boolean invertTexture) {
+	public Rectangle(PongGLRenderer gameRenderer, float vertices[], int textureId, boolean invertTexture) {
 
 		this.gameRenderer = gameRenderer;
 		this.textureId = textureId;
@@ -146,9 +147,9 @@ public class Rectangle {
 		final String fragmentShaderC = gameRenderer.getFragmentShader();
 
 		// prepare shaders and OpenGL program
-		int vertexShader = GLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
+		int vertexShader = PongGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
 				vertexShaderCode);
-		int fragmentShader = GLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
+		int fragmentShader = PongGLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
 				fragmentShaderC);
 
 		mProgram = GLES20.glCreateProgram(); // create empty OpenGL Program
@@ -260,7 +261,7 @@ public class Rectangle {
 
 		// get handle to shape's transformation matrix
 		mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
-		GLRenderer.checkGlError("glGetUniformLocation");
+		PongGLRenderer.checkGlError("glGetUniformLocation");
 
 		// translate paddle by xTranslateValue
 		final float[] mModelMatrix = new float[16];
@@ -268,11 +269,11 @@ public class Rectangle {
 
 		// xTranslateValue += xSpeed;
 
-		// if(xTranslateValue > GLRenderer.SCREEN_WIDTH - radius){
+		// if(xTranslateValue > PongGLRenderer.SCREEN_WIDTH - radius){
 		// xSpeed *= -1;
 		// }
 		//
-		// else if(xTranslateValue < -(GLRenderer.SCREEN_WIDTH - radius)){
+		// else if(xTranslateValue < -(PongGLRenderer.SCREEN_WIDTH - radius)){
 		// xSpeed *= -1;
 		// }
 
@@ -295,7 +296,7 @@ public class Rectangle {
 
 		// Apply the projection and view transformation
 		GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, scratch, 0);
-		GLRenderer.checkGlError("glUniformMatrix4fv");
+		PongGLRenderer.checkGlError("glUniformMatrix4fv");
 
 		GLES20.glLineWidth(2.0f);
 

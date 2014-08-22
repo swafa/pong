@@ -1,4 +1,4 @@
-package com.probico.multipong;
+package com.probico.multipong.shape;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -9,8 +9,10 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
+import com.probico.multipong.MainActivity;
 import com.probico.multipong.MainActivity.GameMode;
 import com.probico.multipong.MainActivity.Level;
+import com.probico.multipong.opengl.PongGLRenderer;
 
 public class Circle {
 
@@ -42,7 +44,7 @@ public class Circle {
 	private float yTranslateValue = 0;
 	private float xTranslateValue = 0;
 
-	private GLRenderer gameRenderer;
+	private PongGLRenderer gameRenderer;
 
 	private boolean ballMovingDirectionUp = false;
 
@@ -74,7 +76,7 @@ public class Circle {
 
 	final static float radius = 0.05f;
 
-	public Circle(GLRenderer gameRenderer) {
+	public Circle(PongGLRenderer gameRenderer) {
 		// vertices[0] = 0;
 		// vertices[1] = 0;
 		// vertices[2] = 0;
@@ -95,9 +97,9 @@ public class Circle {
 		mVertexBuffer.put(vertices);
 		mVertexBuffer.position(0);
 		// prepare shaders and OpenGL program
-		int vertexShader = GLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
+		int vertexShader = PongGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
 				vertexShaderCode);
-		int fragmentShader = GLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
+		int fragmentShader = PongGLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
 				fragmentShaderCode);
 
 		mProgram = GLES20.glCreateProgram(); // create empty OpenGL ES Program
@@ -386,7 +388,7 @@ public class Circle {
 		// Apply the projection and view transformation
 		GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, scratch, 0);
 
-		GLRenderer.checkGlError("glUniformMatrix4fv");
+		PongGLRenderer.checkGlError("glUniformMatrix4fv");
 
 		GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 360);
 
