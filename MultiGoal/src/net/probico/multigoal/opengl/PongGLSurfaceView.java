@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.probico.multigoal;
+package net.probico.multigoal.opengl;
 
+import net.probico.multigoal.MainActivity;
+import net.probico.multigoal.MainActivity.GameMode;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
@@ -25,20 +27,20 @@ import android.widget.Toast;
  * can also be used to capture touch events, such as a user interacting with
  * drawn objects.
  */
-public class MyGLSurfaceView extends GLSurfaceView {
+public class PongGLSurfaceView extends GLSurfaceView {
 
-	private final GLRenderer renderer;
+	private final PongGLRenderer renderer;
 
 	float mPreviousXBottom;
 	float mPreviousXTop;
 
 	MainActivity activity;
 
-	public GLRenderer getRenderer() {
+	public PongGLRenderer getRenderer() {
 		return renderer;
 	}
 
-	public MyGLSurfaceView(Context context) {
+	public PongGLSurfaceView(Context context) {
 		super(context);
 
 		this.setId(10);
@@ -50,7 +52,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		setEGLContextClientVersion(2);
 
 		// Set the Renderer for drawing on the GLSurfaceView
-		renderer = new GLRenderer(context);
+		renderer = new PongGLRenderer(context);
 		setRenderer(renderer);
 
 		// Render the view only when there is a change in the drawing data
