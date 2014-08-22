@@ -1,4 +1,4 @@
-package com.probico.multigoal.common;
+package net.probico.pong.common;
 
 
 import android.content.Context;
