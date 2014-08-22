@@ -206,7 +206,7 @@ public class MainActivity extends BaseGameActivity implements
 
 		// TODO: This is for ads and should be commented until decided to
 		// activate cpi
-		AppsZoom.start(this);
+//		AppsZoom.start(this);
 
 		// enableDebugLog(ENABLE_DEBUG, TAG);
 		super.onCreate(savedInstanceState);
@@ -779,12 +779,12 @@ public class MainActivity extends BaseGameActivity implements
 			
 			// TODO: This is for ads and should be commented until decided to
 			// activate cpi
-			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
-				@Override
-				public void onAdFetched() {
-					AppsZoom.showAd(MainActivity.this);
-				}
-			});
+//			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
+//				@Override
+//				public void onAdFetched() {
+//					AppsZoom.showAd(MainActivity.this);
+//				}
+//			});
 
 		}
 	}
