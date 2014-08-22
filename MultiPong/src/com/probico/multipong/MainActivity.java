@@ -50,7 +50,7 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.probico.multigoal.common.AppRater;
+import com.probico.multipong.common.AppRater;
 
 /**
  * Our main activity for the game.
@@ -206,7 +206,7 @@ public class MainActivity extends BaseGameActivity implements
 
 		// TODO: This is for ads and should be commented until decided to
 		// activate cpi
-		AppsZoom.start(this);
+//		AppsZoom.start(this);
 
 		// enableDebugLog(ENABLE_DEBUG, TAG);
 		super.onCreate(savedInstanceState);
@@ -779,12 +779,12 @@ public class MainActivity extends BaseGameActivity implements
 			
 			// TODO: This is for ads and should be commented until decided to
 			// activate cpi
-			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
-				@Override
-				public void onAdFetched() {
-					AppsZoom.showAd(MainActivity.this);
-				}
-			});
+//			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
+//				@Override
+//				public void onAdFetched() {
+//					AppsZoom.showAd(MainActivity.this);
+//				}
+//			});
 
 		}
 	}
