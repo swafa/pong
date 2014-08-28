@@ -5,8 +5,5 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="/home/samir/Appszoom/AZAndroidSDK1.27/appszoomsdk.jar"/>
-	<classpathentry kind="lib" path="/home/samir/google-play-services_lib/libs/google-play-services.jar"/>
-	<classpathentry kind="lib" path="/home/samir/android-samples-master/eclipse_compat/libraries/BaseGameUtils/libs/android-support-v4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
