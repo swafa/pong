@@ -18,6 +18,7 @@ package com.probico.multipong.opengl;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import net.probico.pong.common.RawResourceReader;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
@@ -26,9 +27,6 @@ import android.util.Log;
 
 import com.probico.multipong.MainActivity;
 import com.probico.multipong.R;
-import com.probico.multipong.R.drawable;
-import com.probico.multipong.R.raw;
-import com.probico.multipong.common.RawResourceReader;
 import com.probico.multipong.shape.Circle;
 import com.probico.multipong.shape.Line;
 import com.probico.multipong.shape.Rectangle;

@@ -19,11 +19,11 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
+import net.probico.pong.common.TextureHelper;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import com.probico.multipong.common.TextureHelper;
 import com.probico.multipong.opengl.PongGLRenderer;
 
 public class Rectangle {
