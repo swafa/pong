@@ -13,9 +13,7 @@ public class Line {
 	final static float PI = 3.1415926535897932384626433832795f;
 	private int mProgram, mPositionHandle, mColorHandle, mMVPMatrixHandle;
 	private FloatBuffer mVertexBuffer;
-	private float vertices[] = new float[2 * 3];
 	float color[] = { 1f, 0f, 0f, 1.0f };
-
 
 	public float[] getColor() {
 		return color;
@@ -25,9 +23,6 @@ public class Line {
 		this.color = color;
 	}
 
-	private PongGLRenderer gameRenderer;
-
-
 	private final String vertexShaderCode = "uniform mat4 uMVPMatrix;"
 			+ "attribute vec4 vPosition;" + "void main() {"
 			+ "  gl_Position = uMVPMatrix * vPosition;" + "}";
@@ -36,11 +31,7 @@ public class Line {
 			+ "uniform vec4 vColor;" + "void main() {"
 			+ "  gl_FragColor = vColor;" + "}";
 
-
 	public Line(PongGLRenderer gameRenderer, float[] vertices) {
-
-		this.gameRenderer = gameRenderer;
-		this.vertices = vertices;
 
 		ByteBuffer vertexByteBuffer = ByteBuffer
 				.allocateDirect(vertices.length * 4);
@@ -48,13 +39,11 @@ public class Line {
 		mVertexBuffer = vertexByteBuffer.asFloatBuffer();
 		mVertexBuffer.put(vertices);
 		mVertexBuffer.position(0);
-        // prepare shaders and OpenGL program
-        int vertexShader = PongGLRenderer.loadShader(
-                GLES20.GL_VERTEX_SHADER,
-                vertexShaderCode);
-        int fragmentShader = PongGLRenderer.loadShader(
-                GLES20.GL_FRAGMENT_SHADER,
-                fragmentShaderCode);
+		// prepare shaders and OpenGL program
+		int vertexShader = PongGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
+				vertexShaderCode);
+		int fragmentShader = PongGLRenderer.loadShader(
+				GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
 
 		mProgram = GLES20.glCreateProgram(); // create empty OpenGL ES Program
 		GLES20.glAttachShader(mProgram, vertexShader); // add the vertex shader
@@ -93,8 +82,7 @@ public class Line {
 		float[] resultMatrix = new float[16];
 		float[] scratch = new float[16];
 
-		Matrix.translateM(resultMatrix, 0, mModelMatrix, 0, 0,
-				0, 0);
+		Matrix.translateM(resultMatrix, 0, mModelMatrix, 0, 0, 0, 0);
 
 		// scratch = new float[16];
 		Matrix.multiplyMM(scratch, 0, resultMatrix, 0, mvpMatrix, 0);
@@ -105,13 +93,12 @@ public class Line {
 		PongGLRenderer.checkGlError("glUniformMatrix4fv");
 
 		GLES20.glLineWidth(6.0f);
-		
+
 		GLES20.glDrawArrays(GLES20.GL_LINE_LOOP, 0, 2);
 
 		// Disable vertex array
 		GLES20.glDisableVertexAttribArray(mPositionHandle);
 
 	}
-
 
 }

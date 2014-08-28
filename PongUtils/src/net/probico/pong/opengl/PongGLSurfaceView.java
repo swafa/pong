@@ -55,12 +55,10 @@ public abstract class PongGLSurfaceView extends GLSurfaceView {
 		setRenderer(renderer);
 
 		// Render the view only when there is a change in the drawing data
-//		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+		// setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 	}
 
 	public abstract PongGLRenderer getPongGLRenderer(Context context);
-
-	private final float TOUCH_SCALE_FACTOR = 2f;
 
 	// private float mPreviousX;
 	// private float mPreviousY;
@@ -73,8 +71,6 @@ public abstract class PongGLSurfaceView extends GLSurfaceView {
 
 		float x;
 		float y;
-		float dxBottom;
-		float dxTop;
 
 		int pointerId;
 
@@ -105,28 +101,31 @@ public abstract class PongGLSurfaceView extends GLSurfaceView {
 							PongMainActivity.GameMode.SINGLE_PLAYER)
 							|| this.activity.getGameMode().equals(
 									PongMainActivity.GameMode.TWO_PLAYERS)
-							|| (this.activity.getGameMode().equals(
-									PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && !renderer
+							|| (this.activity
+									.getGameMode()
+									.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && !renderer
 									.getActivity()
 									.isCurrentParticipantInvitee())) {
-//						dxBottom = x - mPreviousXBottom;
-//						float xTranslateValue = getRenderer().getBottomPaddle()
-//								.getxTranslateValue()
-//								+ dxBottom /getRenderer().getScreenWidth()
-//								* TOUCH_SCALE_FACTOR;
+						// dxBottom = x - mPreviousXBottom;
+						// float xTranslateValue =
+						// getRenderer().getBottomPaddle()
+						// .getxTranslateValue()
+						// + dxBottom /getRenderer().getScreenWidth()
+						// * TOUCH_SCALE_FACTOR;
 						getRenderer().getBottomPaddle().setxTranslateValue(
-								-1f + (x / getRenderer().getScreenWidth()) * (2f));
-						
-						
-//						mPreviousXBottom = x;
+								-1f + (x / getRenderer().getScreenWidth())
+										* (2f));
+
+						// mPreviousXBottom = x;
 
 						if (this.activity.getGameMode().equals(
 								PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 								&& !renderer.getActivity()
 										.isCurrentParticipantInvitee()) {
-							activity.sendPaddleX(getRenderer().getBottomPaddle().getxTranslateValue());
+							activity.sendPaddleX(getRenderer()
+									.getBottomPaddle().getxTranslateValue());
 						}
-						
+
 					}
 
 				}
@@ -134,29 +133,35 @@ public abstract class PongGLSurfaceView extends GLSurfaceView {
 				// Move Top paddle
 				else {
 					if (this.activity.getGameMode().equals(
-									PongMainActivity.GameMode.TWO_PLAYERS)
-							|| (this.activity.getGameMode().equals(
-									PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && renderer
+							PongMainActivity.GameMode.TWO_PLAYERS)
+							|| (this.activity
+									.getGameMode()
+									.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && renderer
 									.getActivity()
 									.isCurrentParticipantInvitee())) {
-//						dxTop = x - mPreviousXTop;
-//						float xTranslateValue = getRenderer().getTopPaddle()
-//								.getxTranslateValue()
-//								+ dxTop * 1.5f /getRenderer().getScreenWidth()
-//								* TOUCH_SCALE_FACTOR;
-//						getRenderer().getTopPaddle().setxTranslateValue(
-//								xTranslateValue);
-//
-//						mPreviousXTop = x;
-						
-						getRenderer().getTopPaddle().setxTranslateValue(
-								-1f + (x / getRenderer().getScreenWidth()) * 2f);
+						// dxTop = x - mPreviousXTop;
+						// float xTranslateValue = getRenderer().getTopPaddle()
+						// .getxTranslateValue()
+						// + dxTop * 1.5f /getRenderer().getScreenWidth()
+						// * TOUCH_SCALE_FACTOR;
+						// getRenderer().getTopPaddle().setxTranslateValue(
+						// xTranslateValue);
+						//
+						// mPreviousXTop = x;
+
+						getRenderer()
+								.getTopPaddle()
+								.setxTranslateValue(
+										-1f
+												+ (x / getRenderer()
+														.getScreenWidth()) * 2f);
 
 						if (this.activity.getGameMode().equals(
 								PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 								&& renderer.getActivity()
 										.isCurrentParticipantInvitee()) {
-							activity.sendPaddleX(getRenderer().getTopPaddle().getxTranslateValue());
+							activity.sendPaddleX(getRenderer().getTopPaddle()
+									.getxTranslateValue());
 						}
 					}
 
@@ -213,9 +218,9 @@ public abstract class PongGLSurfaceView extends GLSurfaceView {
 		// mRenderer.setAngle(mRenderer.getAngle()
 		// + ((dx + dy) * TOUCH_SCALE_FACTOR)); // = 180.0f / 320
 
-//		if(!this.activity.getGameFreezed()){
-//			requestRender();
-//		}
+		// if(!this.activity.getGameFreezed()){
+		// requestRender();
+		// }
 		// }
 		//
 		//

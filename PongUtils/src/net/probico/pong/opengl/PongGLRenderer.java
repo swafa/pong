@@ -113,7 +113,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	private final float[] mProjectionMatrix = new float[16];
 	private final float[] mViewMatrix = new float[16];
 	// private final float[] mRotationMatrix = new float[16];
-	private final float[] mModelMatrix = new float[16];
 
 	private float mAngle;
 	private PongMainActivity activity = null;
@@ -125,8 +124,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	public void setActivity(PongMainActivity activity) {
 		this.activity = activity;
 	}
-
-	private float yTranslateValue;
 
 	@Override
 	public void onSurfaceCreated(GL10 unused, EGLConfig config) {

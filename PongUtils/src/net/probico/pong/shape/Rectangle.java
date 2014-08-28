@@ -31,8 +31,6 @@ public class Rectangle {
 
 	private float xTranslateValue = 0;
 
-	private PongGLRenderer gameRenderer;
-
 	private final FloatBuffer mCubeTextureCoordinates;
 
 	/** Size of the texture coordinate data in elements. */
@@ -40,8 +38,6 @@ public class Rectangle {
 
 	/** This will be used to pass in model texture coordinate information. */
 	private int mTextureCoordinateHandle;
-
-	private float xSpeed = 0.01f;
 
 	/** This is a handle to our texture data. */
 	private int mTextureDataHandle;
@@ -59,8 +55,6 @@ public class Rectangle {
 		this.textureId = textureId;
 	}
 
-	private float vertices[] = new float[4 * 3];
-
 	// private final String vertexShaderCode =
 	// // This matrix member variable provides a hook to manipulate
 	// // the coordinates of the objects that use this vertex shader
@@ -72,10 +66,6 @@ public class Rectangle {
 	// // for the matrix multiplication product to be correct.
 	// "  gl_Position = uMVPMatrix * vPosition;" +
 	// "}";
-
-	private final String fragmentShaderCode = "precision mediump float;"
-			+ "uniform vec4 vColor;" + "void main() {"
-			+ "  gl_FragColor = vColor;" + "}";
 
 	private final FloatBuffer vertexBuffer;
 	// private final ShortBuffer drawListBuffer;
@@ -113,16 +103,15 @@ public class Rectangle {
 	/**
 	 * Sets up the drawing object data for use in an OpenGL ES context.
 	 */
-	public Rectangle(PongGLRenderer gameRenderer, float vertices[], int textureId, boolean invertTexture) {
+	public Rectangle(PongGLRenderer gameRenderer, float vertices[],
+			int textureId, boolean invertTexture) {
 
-		this.gameRenderer = gameRenderer;
 		this.textureId = textureId;
 		// for (int i = 0; i < 360; i++) {
 		// vertices[(i * 3) + 0] = (float) (radius * Math.cos((float) i));
 		// vertices[(i * 3) + 1] = (float) (radius * Math.sin((float) i));
 		// vertices[(i * 3) + 2] = 0;
 		// }
-		this.vertices = vertices;
 
 		// initialize vertex byte buffer for shape coordinates
 		ByteBuffer bb = ByteBuffer.allocateDirect(
@@ -148,8 +137,8 @@ public class Rectangle {
 		// prepare shaders and OpenGL program
 		int vertexShader = PongGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
 				vertexShaderCode);
-		int fragmentShader = PongGLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
-				fragmentShaderC);
+		int fragmentShader = PongGLRenderer.loadShader(
+				GLES20.GL_FRAGMENT_SHADER, fragmentShaderC);
 
 		mProgram = GLES20.glCreateProgram(); // create empty OpenGL Program
 		GLES20.glAttachShader(mProgram, vertexShader); // add the vertex shader
@@ -185,7 +174,6 @@ public class Rectangle {
 		// Load the texture
 		mTextureDataHandle = TextureHelper.loadTexture(
 				gameRenderer.getActivity(), textureId);
-
 
 		float[] cubeTextureCoordinateData;
 
