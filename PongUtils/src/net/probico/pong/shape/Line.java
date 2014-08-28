@@ -8,6 +8,12 @@ import net.probico.pong.opengl.PongGLRenderer;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 
+/**
+ * Line shape. Draws seperator.
+ * 
+ * @author samir
+ * 
+ */
 public class Line {
 
 	final static float PI = 3.1415926535897932384626433832795f;

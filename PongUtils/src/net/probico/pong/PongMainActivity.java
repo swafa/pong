@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2013 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package net.probico.pong;
 
 import java.io.Serializable;
@@ -21,7 +5,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.probico.pong.common.AppRater;
 import net.probico.pong.opengl.PongGLSurfaceView;
 import net.probico.pongutils.R;
 import android.app.Activity;
@@ -56,21 +39,18 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 /**
  * Our main activity for the game.
  * 
- * IMPORTANT: Before attempting to run this sample, please change the package
- * name to your own package name (not com.android.*) and replace the IDs on
- * res/values/ids.xml by your own IDs (you must create a game in the developer
- * console to get those IDs).
  * 
- * This is a very simple game where the user selects "easy mode" or "hard mode"
- * and then the "gameplay" consists of inputting the desired score (0 to 9999).
- * In easy mode, you get the score you request; in hard mode, you get half.
- * 
- * @author Bruno Oliveira
+ * @author samir
  */
 public abstract class PongMainActivity extends BaseGameActivity implements
 		PongMainMenuFragment.Listener, PongLevelSelectionFragment.Listener,
 		RoomUpdateListener, RealTimeMessageReceivedListener,
 		RoomStatusUpdateListener, OnInvitationReceivedListener, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2325782740858547797L;
 
 	private Level level;
 
@@ -81,11 +61,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 	public void setLevel(Level level) {
 		this.level = level;
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2325782740858547797L;
 
 	SoundPool soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 
@@ -150,8 +125,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 	final static String MESSAGE_PADDLE_COORDINATES = "PaddleX";
 	final static String MESSAGE_BALL_INFORMATION = "BallXY";
-	final static String MESSAGE_END_GAME = "End";
-
 	final static String MESSAGE_SCORE = "score";
 
 	private boolean currentParticipantInvitee = true;
@@ -197,9 +170,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 	final boolean ENABLE_DEBUG = true;
 	final String TAG = "TanC";
 
-	// playing on hard mode?
-	boolean mHardMode = false;
-
 	private String mIncomingInvitationId;
 
 	@Override
@@ -207,9 +177,8 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 		// TODO: This is for ads and should be commented until decided to
 		// activate cpi
-//		AppsZoom.start(this);
+		// AppsZoom.start(this);
 
-		// enableDebugLog(ENABLE_DEBUG, TAG);
 		super.onCreate(savedInstanceState);
 
 		// Create a GLSurfaceView instance and set it
@@ -226,7 +195,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 		// listen to fragment events
 		mMainMenuFragment.setListener(this);
 		mLevelSelectionFragment.setListener(this);
-		// mGameplayFragment.setListener(this);
 
 		// add initial fragment (welcome fragment)
 		getSupportFragmentManager().beginTransaction()
@@ -234,18 +202,21 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		// init sounds
 		soundIds[0] = soundPool.load(this, R.raw.pong, 1);
 		soundIds[1] = soundPool.load(this, R.raw.blop, 2);
 
-		AppRater.app_launched(this);
+		// TODO: This is for ads and should be commented until decided to
+		// activate cpi
+		// AppRater.app_launched(this);
 
 	}
-	
+
 	public abstract PongLevelSelectionFragment getPongLevelSelectionFragment();
 
 	public abstract PongMainMenuFragment getPongMainMenuFragment();
 
-	public abstract PongGLSurfaceView getPongGlSurfaceView() ;
+	public abstract PongGLSurfaceView getPongGlSurfaceView();
 
 	protected abstract PongGameplayFragment getPongGamePlayFragment();
 
@@ -292,7 +263,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 			getWindow()
 					.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-			// go to game screen
 		}
 
 	}
@@ -379,16 +349,8 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 		if (request == RC_WAITING_ROOM) {
 			if (response == Activity.RESULT_OK) {
-				// Toast.makeText(this,
-				// "Let the game begin",Toast.LENGTH_LONG).show();
-
-				// requestWindowFeature(Window.FEATURE_NO_TITLE);
 				this.gameMode = GameMode.TWO_PLAYERS_ONLINE;
 				switchToFragment(mGameplayFragment);
-				// inflateGameLayout();
-				// setContentView(gameLayout);
-
-				// sendMessage("Hello Probico!");
 
 			} else if (response == Activity.RESULT_CANCELED) {
 				// Waiting room was dismissed with the back button. The meaning
@@ -399,7 +361,7 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 				// and
 				// continue to connect in the background.
 
-				// in this example, we take the simple approach and just leave
+				// we take the simple approach and just leave
 				// the room:
 				if (room != null) {
 					Games.RealTimeMultiplayer.leave(getApiClient(), this,
@@ -440,7 +402,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 			getWindow()
 					.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-			// go to game screen
 		}
 
 	}
@@ -453,7 +414,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 	}
 
-	// create a RoomConfigBuilder that's appropriate for your implementation
 	private RoomConfig.Builder makeBasicRoomConfigBuilder() {
 		return RoomConfig.builder(this).setMessageReceivedListener(this)
 				.setRoomStatusUpdateListener(this);
@@ -518,6 +478,8 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 		String message = new String(messageData, Charset.forName("UTF-8"));
 
 		String[] messageComponents = message.split(" ");
+
+		// TODO: Clean up. Extract actions to methods
 		if (messageComponents[0].equals(MESSAGE_PADDLE_COORDINATES)) {
 			if (!isCurrentParticipantInvitee()) {
 				glSurfaceView
@@ -570,7 +532,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 			glSurfaceView.getRenderer().getBall()
 					.setySpeed(Float.parseFloat(messageComponents[6]));
 
-			// glSurfaceView.getRenderer().getBall().reverseBallVerticalDirection();
 		}
 
 		else if (messageComponents[0].equals(MESSAGE_SCORE)) {
@@ -785,15 +746,15 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 					|| gameMode.equals(GameMode.TWO_PLAYERS)) {
 				showRestartGameDialog();
 			}
-			
+
 			// TODO: This is for ads and should be commented until decided to
 			// activate cpi
-//			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
-//				@Override
-//				public void onAdFetched() {
-//					AppsZoom.showAd(PongMainActivity.this);
-//				}
-//			});
+			// AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
+			// @Override
+			// public void onAdFetched() {
+			// AppsZoom.showAd(PongMainActivity.this);
+			// }
+			// });
 
 		}
 	}
@@ -926,7 +887,8 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 	public void onInvitationReceived(Invitation invitation) {
 		// show in-game popup to let user know of pending invitation
 		// 1. Instantiate an AlertDialog.Builder with its constructor
-		AlertDialog.Builder builder = new AlertDialog.Builder(PongMainActivity.this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(
+				PongMainActivity.this);
 
 		// 2. Chain together various setter methods to set the dialog
 		// characteristics

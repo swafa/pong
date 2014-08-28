@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package net.probico.pong.opengl;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -30,7 +15,6 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
-
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
  * override the OpenGL ES drawing lifecycle methods:
@@ -39,6 +23,8 @@ import android.util.Log;
  * <li>{@link android.opengl.GLSurfaceView.Renderer#onDrawFrame}</li>
  * <li>{@link android.opengl.GLSurfaceView.Renderer#onSurfaceChanged}</li>
  * </ul>
+ * 
+ * @author samir
  */
 public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 
@@ -53,7 +39,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	private boolean secondRender = false;
 	private float screenWidth;
 	private static final String TAG = "PongGLRenderer";
-	// private Triangle mTriangle;
 	private Rectangle bottomPaddle;
 	private Context context;
 
@@ -64,9 +49,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	final static float PADDLE_WIDTH = 0.6f;
 	final static float PADDLE_HEIGHT = 0.15f;
 
-	// Calculated visible width of the screen
-	// final static float SCREEN_WIDTH = 2.95f;
-	// Distance from center to nearest edge of the paddle
 	final static float CENTER_TO_PADDLE = 2.15f;
 
 	final static float CENTER_TO_VERTICAL_EDGE = 2.4f;
@@ -98,8 +80,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 
 	private Circle circle;
 
-	// private Ball ball;
-
 	public Circle getBall() {
 		return circle;
 	}
@@ -112,7 +92,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	private final float[] mMVPMatrix = new float[16];
 	private final float[] mProjectionMatrix = new float[16];
 	private final float[] mViewMatrix = new float[16];
-	// private final float[] mRotationMatrix = new float[16];
 
 	private float mAngle;
 	private PongMainActivity activity = null;
@@ -179,40 +158,11 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 		// Calculate the projection and view transformation
 		Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 
-		// Draw square
-		// mSquare.draw(mMVPMatrix);
-
-		// Create a rotation for the triangle
-
-		// Use the following code to generate constant rotation.
-		// Leave this code out when using TouchEvents.
-		// long time = SystemClock.uptimeMillis() % 4000L;
-		// float angle = 0.090f * ((int) time);
-
-		// Matrix.setRotateM(mRotationMatrix, 0, mAngle, 0, 0, 1.0f);
-
-		// Draw triangle
-		// mTriangle.draw(scratch);
-
 		draw();
 	}
 
 	private void draw() {
 
-		// Matrix.translateM(mModelMatrix, 0, xTranslateValue, 0, 0); //
-		// translation
-		// to the
-
-		// Matrix.translateM(resultMatrix, 0, mModelMatrix, 0, xTranslateValue,
-		// 0, 0);
-		// // left
-		//
-		// // Combine the rotation matrix with the projection and camera view
-		// // Note that the mMVPMatrix factor *must be first* in order
-		// // for the matrix multiplication product to be correct.
-		// Matrix.multiplyMM(scratch, 0, resultMatrix, 0, mMVPMatrix, 0);
-
-		// background.setTextureId(R.drawable.backgroundpattern_space);
 		background.draw(mMVPMatrix);
 
 		// bottomPaddle.setTextureId(R.drawable.paddle_green);
@@ -223,8 +173,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 
 		circle.draw(mMVPMatrix);
 
-		// separator.setColor(new float[]{0.482352941f, 0f, 0.254901961f,
-		// 1.0f});
 		separator.setColor(new float[] { 0f, 1f, 0f, 1.0f });
 		separator.draw(mMVPMatrix);
 
@@ -337,17 +285,6 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	 */
 	public void setAngle(float angle) {
 		mAngle = angle;
-	}
-
-	public void showMessage() {
-
-		// ((Activity) context).runOnUiThread(new Runnable() {
-		// public void run() {
-		// Toast.makeText(context, "GOAL!!", Toast.LENGTH_SHORT).show();
-		// }
-		// });
-		// Toast.makeText(context, "touched paddle",
-		// Toast.LENGTH_SHORT).show();
 	}
 
 }

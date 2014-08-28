@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2013 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package net.probico.pong;
 
 import net.probico.pong.PongMainActivity.GameMode;
@@ -33,27 +17,12 @@ import android.widget.TextView;
 import com.google.android.gms.games.Games;
 
 /**
- * Fragment for the gameplay portion of the game. It shows the keypad where the
- * user can request their score.
+ * Fragment for the gameplay portion of the game.
  * 
- * @author Bruno Oliveira (Google)
+ * @author samir
  * 
  */
 public abstract class PongGameplayFragment extends Fragment {
-	// int mRequestedScore = 5000;
-	//
-	// static int[] MY_BUTTONS = {
-	// R.id.digit_button_0, R.id.digit_button_1, R.id.digit_button_2,
-	// R.id.digit_button_3, R.id.digit_button_4, R.id.digit_button_5,
-	// R.id.digit_button_6, R.id.digit_button_7, R.id.digit_button_8,
-	// R.id.digit_button_9, R.id.digit_button_clear, R.id.ok_score_button
-	// };
-	//
-	// public interface Listener {
-	// public void onEnteredScore(int score);
-	// }
-	//
-	// Listener mListener = null;
 
 	private static final String MAIN_ACTIVITY_KEY = "main_activity_key";
 	private PongMainActivity activity;
@@ -71,17 +40,10 @@ public abstract class PongGameplayFragment extends Fragment {
 
 	FrameLayout gameLayout;
 
-	// public PongGameplayFragment(PongMainActivity activity){
-	// this.activity = activity;
-	// }
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(getLayoutResourceId(), container, false);
-		// for (int i : MY_BUTTONS) {
-		// ((Button) v.findViewById(i)).setOnClickListener(this);
-		// }
 
 		gameLayout = (FrameLayout) v.findViewById(getGameLayoutResourceId());
 		activity = (PongMainActivity) getArguments().getSerializable(
@@ -90,7 +52,7 @@ public abstract class PongGameplayFragment extends Fragment {
 		inflateGameLayout();
 		return v;
 	}
-	
+
 	public abstract int getGameLayoutResourceId();
 
 	protected abstract int getLayoutResourceId();
@@ -152,12 +114,10 @@ public abstract class PongGameplayFragment extends Fragment {
 					R.style.SmallTextStyle);
 			currentPlayerNameLayoutParams
 					.addRule(RelativeLayout.CENTER_VERTICAL);
-			// vlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 			currentPlayerNameTxtView
 					.setLayoutParams(currentPlayerNameLayoutParams);
 
 			currentPlayerNameTxtView.setText(displayName);
-			// tv.setBackgroundColor(0x4060ff70);
 
 			if ((activity.getGameMode().equals(GameMode.SINGLE_PLAYER) || (activity
 					.getGameMode().equals(GameMode.TWO_PLAYERS_ONLINE) && !activity
@@ -177,10 +137,8 @@ public abstract class PongGameplayFragment extends Fragment {
 		player1ScoreTxtView.setTextColor(Color.WHITE);
 		player1ScoreTxtView.setTextAppearance(activity, R.style.LargeTextStyle);
 		scoreBottomLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-		// vlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 		player1ScoreTxtView.setLayoutParams(scoreBottomLayoutParams);
 		player1ScoreTxtView.setText(activity.getPlayer1Score() + "");
-		// tv.setBackgroundColor(0x4060ff70);
 		bottomLayout.addView(player1ScoreTxtView);
 
 		RelativeLayout.LayoutParams resultMessageLayoutParameters = new RelativeLayout.LayoutParams(
@@ -206,68 +164,12 @@ public abstract class PongGameplayFragment extends Fragment {
 
 		gameLayout.addView(ll);
 
-		// TextView countDownTxtView = new TextView(activity);
-		// countDownTxtView.setText("1 sec");
-		// countDownTxtView.setTextColor(Color.BLUE);
-		// countDownTxtView.setTextAppearance(activity,
-		// R.style.XLargeTextStyle);
-		// resultMessageLayoutParameters.addRule(RelativeLayout.CENTER_IN_PARENT);
-		// ll.addView(countDownTxtView);
-		//
-		// try {
-		// Thread.sleep(3000);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// countDownTxtView.setText("2 sec");
-
 	}
-
-	// public void setListener(Listener l) {
-	// mListener = l;
-	// }
 
 	@Override
 	public void onStart() {
 		super.onStart();
-		// updateUi();
 	}
-
-	void updateUi() {
-		// if (getActivity() == null) return;
-		// TextView scoreInput = ((TextView)
-		// getActivity().findViewById(R.id.score_input));
-		// if (scoreInput != null) scoreInput.setText(String.format("%04d",
-		// mRequestedScore));
-	}
-
-	// @Override
-	// public void onClick(View view) {
-	// switch (view.getId()) {
-	// case R.id.digit_button_clear:
-	// mRequestedScore = 0;
-	// updateUi();
-	// break;
-	// case R.id.digit_button_0:
-	// case R.id.digit_button_1:
-	// case R.id.digit_button_2:
-	// case R.id.digit_button_3:
-	// case R.id.digit_button_4:
-	// case R.id.digit_button_5:
-	// case R.id.digit_button_6:
-	// case R.id.digit_button_7:
-	// case R.id.digit_button_8:
-	// case R.id.digit_button_9:
-	// int x = Integer.parseInt(((Button)view).getText().toString().trim());
-	// mRequestedScore = (mRequestedScore * 10 + x) % 10000;
-	// updateUi();
-	// break;
-	// case R.id.ok_score_button:
-	// mListener.onEnteredScore(mRequestedScore);
-	// break;
-	// }
-	// }
 
 	public void updateScoresUi() {
 		activity.runOnUiThread(new Runnable() {
@@ -373,16 +275,15 @@ public abstract class PongGameplayFragment extends Fragment {
 
 		});
 
-		 try {
-		 for (int i = 3; i > 0; i--) {
-		 setTextFieldText(countDownTxtView, i + "");
-		 Thread.sleep(1000);
-		 }
-		
-		 } catch (InterruptedException e) {
-		 // TODO Auto-generated catch block
-		 e.printStackTrace();
-		 }
+		try {
+			for (int i = 3; i > 0; i--) {
+				setTextFieldText(countDownTxtView, i + "");
+				Thread.sleep(1000);
+			}
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 		activity.runOnUiThread(new Runnable() {
 			@Override

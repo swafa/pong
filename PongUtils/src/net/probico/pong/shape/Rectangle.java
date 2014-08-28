@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package net.probico.pong.shape;
 
 import java.nio.ByteBuffer;
@@ -25,6 +10,12 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
+/**
+ * Rectangle shape. Used for pong paddles.
+ * 
+ * @author samir
+ * 
+ */
 public class Rectangle {
 
 	private float rectangleCoords[];
@@ -55,20 +46,7 @@ public class Rectangle {
 		this.textureId = textureId;
 	}
 
-	// private final String vertexShaderCode =
-	// // This matrix member variable provides a hook to manipulate
-	// // the coordinates of the objects that use this vertex shader
-	// "uniform mat4 uMVPMatrix;" +
-	// "attribute vec4 vPosition;" +
-	// "void main() {" +
-	// // The matrix must be included as a modifier of gl_Position.
-	// // Note that the uMVPMatrix factor *must be first* in order
-	// // for the matrix multiplication product to be correct.
-	// "  gl_Position = uMVPMatrix * vPosition;" +
-	// "}";
-
 	private final FloatBuffer vertexBuffer;
-	// private final ShortBuffer drawListBuffer;
 	private int mProgram;
 	private int mPositionHandle;
 	private int mColorHandle;
@@ -76,11 +54,6 @@ public class Rectangle {
 
 	// number of coordinates per vertex in this array
 	static final int COORDS_PER_VERTEX = 3;
-	// static float squareCoords[] = {
-	// -0.5f, 0.5f, 0.0f, // top left
-	// -0.5f, -0.5f, 0.0f, // bottom left
-	// 0.5f, -0.5f, 0.0f, // bottom right
-	// 0.5f, 0.5f, 0.0f }; // top right
 
 	private final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per
 															// vertex
@@ -107,11 +80,6 @@ public class Rectangle {
 			int textureId, boolean invertTexture) {
 
 		this.textureId = textureId;
-		// for (int i = 0; i < 360; i++) {
-		// vertices[(i * 3) + 0] = (float) (radius * Math.cos((float) i));
-		// vertices[(i * 3) + 1] = (float) (radius * Math.sin((float) i));
-		// vertices[(i * 3) + 2] = 0;
-		// }
 
 		// initialize vertex byte buffer for shape coordinates
 		ByteBuffer bb = ByteBuffer.allocateDirect(
@@ -121,15 +89,6 @@ public class Rectangle {
 		vertexBuffer = bb.asFloatBuffer();
 		vertexBuffer.put(vertices);
 		vertexBuffer.position(0);
-
-		// initialize byte buffer for the draw list
-		// ByteBuffer dlb = ByteBuffer.allocateDirect(
-		// // (# of coordinate values * 2 bytes per short)
-		// drawOrder.length * 2);
-		// dlb.order(ByteOrder.nativeOrder());
-		// drawListBuffer = dlb.asShortBuffer();
-		// drawListBuffer.put(drawOrder);
-		// drawListBuffer.position(0);
 
 		final String vertexShaderCode = gameRenderer.getVertexShader();
 		final String fragmentShaderC = gameRenderer.getFragmentShader();
@@ -246,16 +205,6 @@ public class Rectangle {
 		final float[] mModelMatrix = new float[16];
 		Matrix.setIdentityM(mModelMatrix, 0); // initialize to identity
 
-		// xTranslateValue += xSpeed;
-
-		// if(xTranslateValue > PongGLRenderer.SCREEN_WIDTH - radius){
-		// xSpeed *= -1;
-		// }
-		//
-		// else if(xTranslateValue < -(PongGLRenderer.SCREEN_WIDTH - radius)){
-		// xSpeed *= -1;
-		// }
-
 		if (xTranslateValue > 0.78)
 			xTranslateValue = 0.78f;
 
@@ -280,10 +229,6 @@ public class Rectangle {
 		GLES20.glLineWidth(2.0f);
 
 		GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 4);
-		// Draw the square
-		// GLES20.glDrawElements(
-		// GLES20.GL_TRIANGLES, drawOrder.length,
-		// GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
 
 		// Disable vertex array
 		GLES20.glDisableVertexAttribArray(mPositionHandle);

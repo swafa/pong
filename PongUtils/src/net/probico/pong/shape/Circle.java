@@ -12,6 +12,12 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
+/**
+ * Circle shape. Used for pong ball.
+ * 
+ * @author samir
+ * 
+ */
 public class Circle {
 
 	final static float PI = 3.1415926535897932384626433832795f;
@@ -75,9 +81,6 @@ public class Circle {
 	final static float radius = 0.05f;
 
 	public Circle(PongGLRenderer gameRenderer) {
-		// vertices[0] = 0;
-		// vertices[1] = 0;
-		// vertices[2] = 0;
 
 		this.gameRenderer = gameRenderer;
 		for (int i = 0; i < 360; i++) {
@@ -97,8 +100,8 @@ public class Circle {
 		// prepare shaders and OpenGL program
 		int vertexShader = PongGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
 				vertexShaderCode);
-		int fragmentShader = PongGLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
-				fragmentShaderCode);
+		int fragmentShader = PongGLRenderer.loadShader(
+				GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
 
 		mProgram = GLES20.glCreateProgram(); // create empty OpenGL ES Program
 		GLES20.glAttachShader(mProgram, vertexShader); // add the vertex shader
@@ -109,6 +112,7 @@ public class Circle {
 
 	}
 
+	// TODO: Clean up. Extract to methods
 	public void draw(float[] mvpMatrix) {
 
 		GLES20.glUseProgram(mProgram);
@@ -135,12 +139,12 @@ public class Circle {
 				&& gameRenderer.getBottomPaddle().getxTranslateValue() <= xTranslateValue + 0.22
 				&& gameRenderer.getBottomPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
 
-//			MediaPlayer mp = MediaPlayer.create(
-//					this.gameRenderer.getActivity(), R.raw.pong);
-//			mp.start();
-			
-        	gameRenderer.getActivity().getSoundPool().play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1, 0, 1.0f);
-			
+			gameRenderer
+					.getActivity()
+					.getSoundPool()
+					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
+							0, 1.0f);
+
 			ballMovingDirectionUp = true;
 
 			if ((gameRenderer.getActivity().getGameMode()
@@ -156,14 +160,10 @@ public class Circle {
 			if (xTranslateValue > gameRenderer.getBottomPaddle()
 					.getxTranslateValue() + 0.1) {
 				ballMovingDirectionRight = true;
-				// if (ySpeed >= 0.026)
-				// ySpeed -= 0.002f;
 				xSpeed = ySpeed * 2;
 			} else if (xTranslateValue < gameRenderer.getBottomPaddle()
 					.getxTranslateValue() - 0.1) {
 				ballMovingDirectionRight = false;
-				// if (ySpeed >= 0.026)
-				// ySpeed -= 0.002f;
 				xSpeed = ySpeed * 2;
 			}
 
@@ -180,13 +180,12 @@ public class Circle {
 		else if (yTranslateValue >= 0.88
 				&& gameRenderer.getTopPaddle().getxTranslateValue() <= xTranslateValue + 0.22
 				&& gameRenderer.getTopPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
-//			 
-//			MediaPlayer mp =
-//			 MediaPlayer.create(this.gameRenderer.getActivity(),
-//			 R.raw.pong);
-//			 mp.start();
-			
-			gameRenderer.getActivity().getSoundPool().play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1, 0, 1.0f);
+
+			gameRenderer
+					.getActivity()
+					.getSoundPool()
+					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
+							0, 1.0f);
 			ballMovingDirectionUp = false;
 
 			if ((gameRenderer.getActivity().getGameMode()
@@ -203,18 +202,13 @@ public class Circle {
 			// direction and accelerate
 			if (xTranslateValue > gameRenderer.getTopPaddle()
 					.getxTranslateValue() + 0.1) {
-				
+
 				ballMovingDirectionRight = true;
-				// if (ySpeed >= 0.026)
-				// ySpeed -= 0.002f;
 				xSpeed = ySpeed * 2;
 			} else if (xTranslateValue < gameRenderer.getTopPaddle()
 					.getxTranslateValue() - 0.1) {
-				
-				
+
 				ballMovingDirectionRight = false;
-				// if (ySpeed >= 0.026)
-				// ySpeed -= 0.002f;
 				xSpeed = ySpeed * 2;
 
 			}
@@ -229,41 +223,37 @@ public class Circle {
 		}
 
 		if (xTranslateValue > 0.95) {
-//			MediaPlayer mp =
-//					 MediaPlayer.create(this.gameRenderer.getActivity(),
-//					 R.raw.pong);
-//					 mp.start();
-//					 
-			
-			gameRenderer.getActivity().getSoundPool().play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1, 0, 1.0f);
+			gameRenderer
+					.getActivity()
+					.getSoundPool()
+					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
+							0, 1.0f);
 			ballMovingDirectionRight = false;
 		}
 
 		else if (xTranslateValue < -0.95) {
-			
-//			MediaPlayer mp =
-//					 MediaPlayer.create(this.gameRenderer.getActivity(),
-//					 R.raw.pong);
-//					 mp.start();
 
-			gameRenderer.getActivity().getSoundPool().play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1, 0, 1.0f);
+			gameRenderer
+					.getActivity()
+					.getSoundPool()
+					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
+							0, 1.0f);
 			ballMovingDirectionRight = true;
 		}
 
-		
-		if(!(gameRenderer.getActivity().gameOver() || (xSpeed == 0 && ySpeed == 0))){
-			
-		if (ballMovingDirectionUp)
-			yTranslateValue += ySpeed;
-		else
-			yTranslateValue -= ySpeed;
+		if (!(gameRenderer.getActivity().gameOver() || (xSpeed == 0 && ySpeed == 0))) {
 
-		if (ballMovingDirectionRight) {
-			xTranslateValue += xSpeed;
+			if (ballMovingDirectionUp)
+				yTranslateValue += ySpeed;
+			else
+				yTranslateValue -= ySpeed;
 
-		} else {
-			xTranslateValue -= xSpeed;
-		}
+			if (ballMovingDirectionRight) {
+				xTranslateValue += xSpeed;
+
+			} else {
+				xTranslateValue -= xSpeed;
+			}
 		}
 
 		if (this.gameRenderer.getActivity().getGameMode()
@@ -272,12 +262,13 @@ public class Circle {
 			float speedRatio = ySpeed != 0 ? xSpeed / ySpeed : 0;
 
 			float robotFactor = 0f;
-			
-			if ((gameRenderer.getActivity().getLevel().equals(Level.EASY) && ySpeed > 0.014) ||
-					(gameRenderer.getActivity().getLevel().equals(Level.HARD) && ySpeed > 0.03)) {
+
+			if ((gameRenderer.getActivity().getLevel().equals(Level.EASY) && ySpeed > 0.014)
+					|| (gameRenderer.getActivity().getLevel()
+							.equals(Level.HARD) && ySpeed > 0.03)) {
 				robotFactor = 0.20f;
-			} 
-			
+			}
+
 			if (ballMovingDirectionRight) {
 				this.gameRenderer.getTopPaddle().setxTranslateValue(
 						xTranslateValue - robotFactor * speedRatio);
@@ -287,15 +278,26 @@ public class Circle {
 			}
 		}
 
-		if ((yTranslateValue < -0.95 && (gameRenderer.getActivity().getGameMode().equals(GameMode.SINGLE_PLAYER) || gameRenderer.getActivity().getGameMode().equals(GameMode.TWO_PLAYERS) || (gameRenderer.getActivity().getGameMode().equals(GameMode.TWO_PLAYERS_ONLINE) && !gameRenderer.getActivity().isCurrentParticipantInvitee())) ) 
-	     || (yTranslateValue >  0.95 && (gameRenderer.getActivity().getGameMode().equals(GameMode.SINGLE_PLAYER) || gameRenderer.getActivity().getGameMode().equals(GameMode.TWO_PLAYERS) || (gameRenderer.getActivity().getGameMode().equals(GameMode.TWO_PLAYERS_ONLINE) && gameRenderer.getActivity().isCurrentParticipantInvitee())) )) {
-			
-//			MediaPlayer mp = MediaPlayer.create(
-//					this.gameRenderer.getActivity(), R.raw.blop);
-//			mp.start();
-//			
-			
-			gameRenderer.getActivity().getSoundPool().play(gameRenderer.getActivity().getSoundIds()[1], 1, 1, 1, 0, 1.0f);
+		if ((yTranslateValue < -0.95 && (gameRenderer.getActivity()
+				.getGameMode().equals(GameMode.SINGLE_PLAYER)
+				|| gameRenderer.getActivity().getGameMode()
+						.equals(GameMode.TWO_PLAYERS) || (gameRenderer
+				.getActivity().getGameMode()
+				.equals(GameMode.TWO_PLAYERS_ONLINE) && !gameRenderer
+				.getActivity().isCurrentParticipantInvitee())))
+				|| (yTranslateValue > 0.95 && (gameRenderer.getActivity()
+						.getGameMode().equals(GameMode.SINGLE_PLAYER)
+						|| gameRenderer.getActivity().getGameMode()
+								.equals(GameMode.TWO_PLAYERS) || (gameRenderer
+						.getActivity().getGameMode()
+						.equals(GameMode.TWO_PLAYERS_ONLINE) && gameRenderer
+						.getActivity().isCurrentParticipantInvitee())))) {
+
+			gameRenderer
+					.getActivity()
+					.getSoundPool()
+					.play(gameRenderer.getActivity().getSoundIds()[1], 1, 1, 1,
+							0, 1.0f);
 			ySpeed = 0.01f;
 			xSpeed = 0.01f;
 			if (yTranslateValue > 0.95) {
@@ -304,17 +306,12 @@ public class Circle {
 			} else if (yTranslateValue < -0.95) {
 				this.gameRenderer.getActivity().incrementPlayer2Score();
 			}
-			// gameRenderer.showMessage();
 			xTranslateValue = 0;
 			yTranslateValue = 0;
 
 			ballMovingDirectionUp = !ballMovingDirectionUp;
 			if (gameRenderer.getActivity().getGameMode()
 					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)) {
-				// && ((gameRenderer.getActivity().isCurrentParticipantInvitee()
-				// && yTranslateValue > 0.9) ||
-				// (!gameRenderer.getActivity().isCurrentParticipantInvitee() &&
-				// yTranslateValue < 0.9))){
 				// Corrective action
 
 				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
@@ -324,51 +321,6 @@ public class Circle {
 
 			}
 		}
-
-		// if(yTranslateValue > 0.9 &&
-		// ((gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.SINGLE_PLAYER)
-		// ||
-		// gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS)
-		// ||
-		// (gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
-		// && gameRenderer.getActivity().isCurrentParticipantInvitee())))){
-		//
-		// this.gameRenderer.getActivity().incrementPlayer1Score();
-		// xTranslateValue = 0;
-		// yTranslateValue = 0;
-		//
-		// if(gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)){
-		// gameRenderer.getActivity().sendBallCoordinates(xTranslateValue,
-		// yTranslateValue);
-		// gameRenderer.getActivity().sendUpdateScoreMessage();
-		// }
-		// }
-		//
-		// if(yTranslateValue < -0.9 &&
-		// ((gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.SINGLE_PLAYER)
-		// ||
-		// gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS)
-		// ||
-		// (gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
-		// && !gameRenderer.getActivity().isCurrentParticipantInvitee())))){
-		//
-		// this.gameRenderer.getActivity().incrementPlayer2Score();
-		// xTranslateValue = 0;
-		// yTranslateValue = 0;
-		//
-		// if(gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)){
-		// gameRenderer.getActivity().sendBallCoordinates(xTranslateValue,
-		// yTranslateValue);
-		// gameRenderer.getActivity().sendUpdateScoreMessage();
-		// }
-		// }
-
-		// if(Math.round(yTranslateValue * 100.00) / 100.00 == 0 &&
-		// gameRenderer.getActivity().getGameMode().equals(GameMode.TWO_PLAYERS_ONLINE)){
-		// gameRenderer.getActivity().sendBallInformation(xTranslateValue,
-		// yTranslateValue, ballMovingDirectionRight,
-		// ballMovingDirectionUp, xSpeed, ySpeed);
-		// }
 
 		// translate ball by yTranslateValue
 		final float[] mModelMatrix = new float[16];
@@ -380,7 +332,6 @@ public class Circle {
 		Matrix.translateM(resultMatrix, 0, mModelMatrix, 0, xTranslateValue,
 				yTranslateValue, 0);
 
-		// scratch = new float[16];
 		Matrix.multiplyMM(scratch, 0, resultMatrix, 0, mvpMatrix, 0);
 
 		// Apply the projection and view transformation
@@ -392,10 +343,6 @@ public class Circle {
 
 		// Disable vertex array
 		GLES20.glDisableVertexAttribArray(mPositionHandle);
-
-		// if(!gameRenderer.getActivity().getGameFreezed()){
-		// this.gameRenderer.getActivity().getGlSurfaceView().requestRender();
-		// }
 
 	}
 
