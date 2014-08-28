@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.probico.multigoal.opengl.PongGLSurfaceView;
-
+import net.probico.pong.common.AppRater;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -51,7 +51,6 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.probico.multipong.common.AppRater;
 
 /**
  * Our main activity for the game.

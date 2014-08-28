@@ -20,18 +20,14 @@ import javax.microedition.khronos.opengles.GL10;
 
 import net.probico.multigoal.MainActivity;
 import net.probico.multigoal.R;
-import net.probico.multigoal.R.drawable;
-import net.probico.multigoal.R.raw;
 import net.probico.multigoal.shape.Circle;
 import net.probico.multigoal.shape.Rectangle;
-
+import net.probico.pong.common.RawResourceReader;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
-
-import com.probico.multipong.common.RawResourceReader;
 
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
