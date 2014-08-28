@@ -16,33 +16,7 @@
 -->
 
 <resources>
+
     <style name="AppTheme" parent="android:Theme.Holo.NoActionBar" />
 
-  	<style name="XLargeTextStyle">
-	    <item name="android:textSize">38sp</item> <!-- different values in different folders  -->
-	</style> 
-	
-	<style name="LargeTextStyle">
-	    <item name="android:textSize">23sp</item> <!-- different values in different folders  -->
-	</style> 
-	    
-  	<style name="MediumTextStyle">
-   		<item name="android:textSize">13sp</item> <!-- different values in different folders  -->
-	</style>
-	
-	<style name="SmallTextStyle">
-	    <item name="android:textSize">11sp</item> <!-- different values in different folders  -->
-	</style> 	
-	
-	<style name="ButtonStyle">
-	    <item name="android:textSize">15sp</item>
-	    <item name="android:layout_width">100dp</item> <!-- different values in different folders  -->
-	    <item name="android:layout_height">30dp</item>
-	</style> 
-	
-	<style name="SmallButtonStyle">
-	    <item name="android:textSize">13sp</item>
-	    <item name="android:layout_width">80dp</item> <!-- different values in different folders  -->
-	    <item name="android:layout_height">30dp</item>
-	</style> 			
 </resources>

@@ -213,16 +213,15 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020018;
         public static final int common_signin_btn_text_pressed_dark=0x7f020019;
         public static final int common_signin_btn_text_pressed_light=0x7f02001a;
-        public static final int ic_launcher=0x7f02001b;
-        public static final int ic_plusone_medium_off_client=0x7f02001c;
-        public static final int ic_plusone_small_off_client=0x7f02001d;
-        public static final int ic_plusone_standard_off_client=0x7f02001e;
-        public static final int ic_plusone_tall_off_client=0x7f02001f;
-        public static final int launching_icon=0x7f020020;
-        public static final int logo=0x7f020021;
-        public static final int logo_beta=0x7f020022;
-        public static final int paddle_green=0x7f020023;
-        public static final int zickzackwithgreen=0x7f020024;
+        public static final int ic_plusone_medium_off_client=0x7f02001b;
+        public static final int ic_plusone_small_off_client=0x7f02001c;
+        public static final int ic_plusone_standard_off_client=0x7f02001d;
+        public static final int ic_plusone_tall_off_client=0x7f02001e;
+        public static final int launching_icon=0x7f02001f;
+        public static final int logo=0x7f020020;
+        public static final int logo_beta=0x7f020021;
+        public static final int paddle_green=0x7f020022;
+        public static final int zickzackwithgreen=0x7f020023;
     }
     public static final class id {
         public static final int easy_button=0x7f060008;
@@ -234,11 +233,8 @@ containing a value of this type.
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int satellite=0x7f060002;
-        public static final int score_display=0x7f060014;
-        public static final int scoreblurb=0x7f060015;
         public static final int screen_gameplay=0x7f060006;
         public static final int screen_menu=0x7f060007;
-        public static final int screen_win=0x7f060013;
         public static final int sign_in_bar=0x7f06000f;
         public static final int sign_in_button=0x7f060010;
         public static final int sign_out_bar=0x7f060011;
@@ -247,10 +243,6 @@ containing a value of this type.
         public static final int terrain=0x7f060003;
         public static final int two_players_button=0x7f06000c;
         public static final int two_players_online_button=0x7f06000d;
-        public static final int win_ok_button=0x7f060016;
-        public static final int win_screen_sign_in_bar=0x7f060017;
-        public static final int win_screen_sign_in_button=0x7f060018;
-        public static final int win_screen_signed_in_bar=0x7f060019;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -260,7 +252,6 @@ containing a value of this type.
         public static final int fragment_gameplay=0x7f030001;
         public static final int fragment_level_selection=0x7f030002;
         public static final int fragment_mainmenu=0x7f030003;
-        public static final int fragment_win=0x7f030004;
     }
     public static final class raw {
         public static final int blop=0x7f040000;
@@ -269,20 +260,14 @@ containing a value of this type.
         public static final int pong=0x7f040003;
     }
     public static final class string {
-        public static final int achievement=0x7f070046;
         public static final int achievement_arrogant=0x7f070037;
-        public static final int achievement_arrogant_toast_text=0x7f070043;
         public static final int achievement_bored=0x7f070035;
         public static final int achievement_humble=0x7f070036;
-        public static final int achievement_humble_toast_text=0x7f070044;
         public static final int achievement_leet=0x7f070038;
-        public static final int achievement_leet_toast_text=0x7f070045;
         /**  TODO: Replace these by your achievement/leaderboard IDs! 
          */
         public static final int achievement_prime=0x7f070033;
-        public static final int achievement_prime_toast_text=0x7f070042;
         public static final int achievement_really_bored=0x7f070034;
-        public static final int achievements_not_available=0x7f07003e;
         /**  TODO: Replace this by your app's app ID! 
          */
         public static final int app_id=0x7f070032;
@@ -310,9 +295,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f070014;
-        public static final int az_appkey=0x7f070061;
-        public static final int choose_difficulty=0x7f070056;
-        public static final int clear=0x7f070054;
+        public static final int az_appkey=0x7f07003c;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -384,33 +367,17 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f070013;
-        public static final int digit0=0x7f07004a;
-        public static final int digit1=0x7f07004b;
-        public static final int digit2=0x7f07004c;
-        public static final int digit3=0x7f07004d;
-        public static final int digit4=0x7f07004e;
-        public static final int digit5=0x7f07004f;
-        public static final int digit6=0x7f070050;
-        public static final int digit7=0x7f070051;
-        public static final int digit8=0x7f070052;
-        public static final int digit9=0x7f070053;
         public static final int easy=0x7f070027;
-        public static final int easy_mode_explanation=0x7f070040;
         public static final int game_cancelled_message=0x7f07002b;
         public static final int gamehelper_app_misconfigured=0x7f07001c;
         public static final int gamehelper_license_failed=0x7f07001d;
         public static final int gamehelper_sign_in_failed=0x7f07001b;
         public static final int gamehelper_unknown_error=0x7f07001e;
         public static final int hard=0x7f070028;
-        public static final int hard_mode_explanation=0x7f070041;
         public static final int incoming_invitation=0x7f070030;
-        public static final int initial_input=0x7f070049;
-        public static final int invitation_notification=0x7f070060;
         public static final int invitations=0x7f070023;
-        public static final int invite_players=0x7f07005e;
         public static final int leaderboard_easy=0x7f070039;
         public static final int leaderboard_hard=0x7f07003a;
-        public static final int leaderboards_not_available=0x7f07003f;
         /**  Location client code resources (prefix with location_client) 
          */
         public static final int location_client_powered_by_google=0x7f07001a;
@@ -418,29 +385,16 @@ containing a value of this type.
         public static final int new_match_prompt=0x7f07002c;
         public static final int no=0x7f07002e;
         public static final int not_now=0x7f070031;
-        public static final int ok=0x7f070055;
         public static final int please_sign_in_message=0x7f07002a;
-        public static final int quick_start=0x7f07005d;
-        public static final int see_your_progress=0x7f070057;
-        public static final int show_achievements=0x7f070058;
-        public static final int show_invitations=0x7f07005f;
-        public static final int show_leaderboards=0x7f070059;
-        public static final int sign_in=0x7f07005a;
-        public static final int sign_in_to_upload_this_score=0x7f07005c;
         public static final int sign_in_why=0x7f070024;
         public static final int sign_out=0x7f070026;
         public static final int signed_out_greeting=0x7f070029;
-        public static final int signing_in=0x7f07003b;
-        public static final int signing_out=0x7f07003c;
         public static final int single_player=0x7f070020;
-        public static final int title_activity_main=0x7f07003d;
+        public static final int title_activity_main=0x7f07003b;
         public static final int two_players=0x7f070021;
         public static final int two_players_online=0x7f070022;
-        public static final int what_score_do_you_deserve=0x7f070048;
         public static final int yes=0x7f07002f;
         public static final int you_are_signed_in=0x7f070025;
-        public static final int you_win=0x7f07005b;
-        public static final int your_progress_will_be_uploaded=0x7f070047;
     }
     public static final class style {
         /** 
@@ -462,17 +416,9 @@ containing a value of this type.
  different values in different folders  
  different values in different folders  
  different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
          */
         public static final int LargeTextStyle=0x7f090004;
         /**  different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  
@@ -483,17 +429,9 @@ containing a value of this type.
  different values in different folders  
  different values in different folders  
  different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
          */
         public static final int SmallTextStyle=0x7f090006;
         /**  different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
- different values in different folders  
  different values in different folders  
  different values in different folders  
  different values in different folders  

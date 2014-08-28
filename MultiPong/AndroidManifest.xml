@@ -100,7 +100,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.probico.multipong.GameplayFragment"
+            android:name="com.probico.multipong.MultiPongGameplayFragment"
             android:label="@string/app_name" >
         </activity>
         

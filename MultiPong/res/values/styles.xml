@@ -18,8 +18,4 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Light" />
     
-	<style name="ButtonStyle">
-	    <item name="android:layout_width">150dp</item> <!-- different values in different folders  -->
-	    <item name="android:layout_height">40sp</item>
-	</style> 	    
 </resources>
