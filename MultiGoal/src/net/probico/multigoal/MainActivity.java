@@ -21,6 +21,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.probico.multigoal.opengl.PongGLSurfaceView;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -49,7 +51,7 @@ import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
 import com.google.example.games.basegameutils.BaseGameActivity;
-import com.probico.multigoal.common.AppRater;
+import com.probico.multipong.common.AppRater;
 
 /**
  * Our main activity for the game.
@@ -118,7 +120,7 @@ public class MainActivity extends BaseGameActivity implements
 		this.player2Score = player2Score;
 	}
 
-	private MyGLSurfaceView glSurfaceView;
+	private PongGLSurfaceView glSurfaceView;
 
 	public enum GameMode {
 		SINGLE_PLAYER, TWO_PLAYERS, TWO_PLAYERS_ONLINE
@@ -138,11 +140,11 @@ public class MainActivity extends BaseGameActivity implements
 		this.gameMode = gameMode;
 	}
 
-	public MyGLSurfaceView getGlSurfaceView() {
+	public PongGLSurfaceView getGlSurfaceView() {
 		return glSurfaceView;
 	}
 
-	public void setGlSurfaceView(MyGLSurfaceView glSurfaceView) {
+	public void setGlSurfaceView(PongGLSurfaceView glSurfaceView) {
 		this.glSurfaceView = glSurfaceView;
 	}
 
@@ -212,7 +214,7 @@ public class MainActivity extends BaseGameActivity implements
 
 		// Create a GLSurfaceView instance and set it
 		// as the ContentView for this Activity
-		glSurfaceView = new MyGLSurfaceView(this);
+		glSurfaceView = new PongGLSurfaceView(this);
 
 		setContentView(R.layout.activity_main);
 

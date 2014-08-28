@@ -1,4 +1,4 @@
-package net.probico.multigoal;
+package net.probico.multigoal.shape;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -7,6 +7,7 @@ import java.util.Random;
 
 import net.probico.multigoal.R;
 import net.probico.multigoal.MainActivity.GameMode;
+import net.probico.multigoal.opengl.PongGLRenderer;
 import android.media.MediaPlayer;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
@@ -29,7 +30,7 @@ public class Line {
 		this.color = color;
 	}
 
-	private GLRenderer gameRenderer;
+	private PongGLRenderer gameRenderer;
 
 
 	private final String vertexShaderCode = "uniform mat4 uMVPMatrix;"
@@ -41,7 +42,7 @@ public class Line {
 			+ "  gl_FragColor = vColor;" + "}";
 
 
-	public Line(GLRenderer gameRenderer, float[] vertices) {
+	public Line(PongGLRenderer gameRenderer, float[] vertices) {
 
 		this.gameRenderer = gameRenderer;
 		this.vertices = vertices;
@@ -53,10 +54,10 @@ public class Line {
 		mVertexBuffer.put(vertices);
 		mVertexBuffer.position(0);
         // prepare shaders and OpenGL program
-        int vertexShader = GLRenderer.loadShader(
+        int vertexShader = PongGLRenderer.loadShader(
                 GLES20.GL_VERTEX_SHADER,
                 vertexShaderCode);
-        int fragmentShader = GLRenderer.loadShader(
+        int fragmentShader = PongGLRenderer.loadShader(
                 GLES20.GL_FRAGMENT_SHADER,
                 fragmentShaderCode);
 
@@ -106,7 +107,7 @@ public class Line {
 		// Apply the projection and view transformation
 		GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, scratch, 0);
 
-		GLRenderer.checkGlError("glUniformMatrix4fv");
+		PongGLRenderer.checkGlError("glUniformMatrix4fv");
 
 		GLES20.glLineWidth(6.0f);
 		
