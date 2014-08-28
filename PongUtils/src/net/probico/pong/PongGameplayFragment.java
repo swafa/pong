@@ -57,28 +57,31 @@ public abstract class PongGameplayFragment extends Fragment {
 
 	protected abstract int getLayoutResourceId();
 
+	/**
+	 * 
+	 * Inflates Android layout with opengl and Android components
+	 * 
+	 * @author samir
+	 */
 	public void inflateGameLayout() {
 
 		String displayName;
 
-		if (activity.getApiClientInstance().isConnected()
-				&& Games.Players.getCurrentPlayer(activity
-						.getApiClientInstance()) != null) {
-			displayName = Games.Players.getCurrentPlayer(
-					activity.getApiClientInstance()).getDisplayName();
-		} else {
-			displayName = "You";
-		}
+		displayName = setDisplayName();
 
+		// To display countdown only on first render
 		activity.getGlSurfaceView().getRenderer().setFirstRender(true);
 
-		if (activity.getGlSurfaceView().getParent() != null) {
-			((FrameLayout) activity.getGlSurfaceView().getParent())
-					.removeAllViews();
-		}
+		clearAllViews();
 
+		// Add GLSurfaceView
 		gameLayout.addView(activity.getGlSurfaceView());
 
+		addGameInfoUi(displayName);
+
+	}
+
+	private void addGameInfoUi(String displayName) {
 		LinearLayout ll = new LinearLayout(activity);
 		ll.setOrientation(LinearLayout.VERTICAL);
 
@@ -163,7 +166,26 @@ public abstract class PongGameplayFragment extends Fragment {
 		ll.addView(bottomLayout);
 
 		gameLayout.addView(ll);
+	}
 
+	private void clearAllViews() {
+		if (activity.getGlSurfaceView().getParent() != null) {
+			((FrameLayout) activity.getGlSurfaceView().getParent())
+					.removeAllViews();
+		}
+	}
+
+	private String setDisplayName() {
+		String displayName;
+		if (activity.getApiClientInstance().isConnected()
+				&& Games.Players.getCurrentPlayer(activity
+						.getApiClientInstance()) != null) {
+			displayName = Games.Players.getCurrentPlayer(
+					activity.getApiClientInstance()).getDisplayName();
+		} else {
+			displayName = "You";
+		}
+		return displayName;
 	}
 
 	@Override
