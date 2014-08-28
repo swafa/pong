@@ -4,7 +4,6 @@ import net.probico.pong.PongMainActivity;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 /**
  * A view container where OpenGL ES graphics can be drawn on screen. This view
