@@ -11,15 +11,15 @@ import android.content.Context;
  * 
  * @author samir
  */
-public class MultiPongGLSurfaceView extends PongGLSurfaceView {
+public class GLSurfaceView extends PongGLSurfaceView {
 
-	public MultiPongGLSurfaceView(Context context) {
+	public GLSurfaceView(Context context) {
 		super(context);
 	}
 
 	@Override
 	public PongGLRenderer getPongGLRenderer(Context context) {
-		return new MultiPongGLRenderer(context);
+		return new GLRenderer(context);
 	}
 
 }

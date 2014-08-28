@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  * @author samir
  * 
  */
-public class MultiPongMainMenuFragment extends PongMainMenuFragment {
+public class MainMenuFragment extends PongMainMenuFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

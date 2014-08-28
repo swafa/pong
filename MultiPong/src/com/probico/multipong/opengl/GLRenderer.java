@@ -10,9 +10,9 @@ import com.probico.multipong.R;
  * 
  * @author samir
  */
-public class MultiPongGLRenderer extends PongGLRenderer {
+public class GLRenderer extends PongGLRenderer {
 
-	public MultiPongGLRenderer(Context context) {
+	public GLRenderer(Context context) {
 		super(context);
 	}
 

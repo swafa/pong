@@ -6,7 +6,7 @@ import net.probico.pong.PongMainActivity;
 import net.probico.pong.PongMainMenuFragment;
 import android.os.Bundle;
 
-import com.probico.multipong.opengl.MultiPongGLSurfaceView;
+import com.probico.multipong.opengl.GLSurfaceView;
 
 /**
  * Our main activity for the game.
@@ -29,23 +29,23 @@ public class MainActivity extends PongMainActivity {
 
 	@Override
 	protected PongGameplayFragment getPongGamePlayFragment() {
-		return MultiPongGameplayFragment.newInstance(this);
+		return GameplayFragment.newInstance(this);
 
 	}
 
 	@Override
-	public MultiPongGLSurfaceView getPongGlSurfaceView() {
-		return new MultiPongGLSurfaceView(this);
+	public GLSurfaceView getPongGlSurfaceView() {
+		return new GLSurfaceView(this);
 	}
 
 	@Override
 	public PongMainMenuFragment getPongMainMenuFragment() {
-		return new MultiPongMainMenuFragment();
+		return new MainMenuFragment();
 	}
 
 	@Override
 	public PongLevelSelectionFragment getPongLevelSelectionFragment() {
-		return new MultiPongLevelSelectionFragment();
+		return new LevelSelectionFragment();
 	}
 
 }

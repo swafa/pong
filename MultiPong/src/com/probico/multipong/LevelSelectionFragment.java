@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * @author samir
  * 
  */
-public class MultiPongLevelSelectionFragment extends PongLevelSelectionFragment {
+public class LevelSelectionFragment extends PongLevelSelectionFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

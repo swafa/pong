@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * 
  * @author samir
  */
-public class MultiPongGameplayFragment extends PongGameplayFragment {
+public class GameplayFragment extends PongGameplayFragment {
 
 	private static final String MAIN_ACTIVITY_KEY = "main_activity_key";
 
@@ -26,9 +26,9 @@ public class MultiPongGameplayFragment extends PongGameplayFragment {
 		return R.layout.fragment_gameplay;
 	}
 
-	public static MultiPongGameplayFragment newInstance(
+	public static GameplayFragment newInstance(
 			MainActivity mainActivity) {
-		MultiPongGameplayFragment fragment = new MultiPongGameplayFragment();
+		GameplayFragment fragment = new GameplayFragment();
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(MAIN_ACTIVITY_KEY, mainActivity);
 		fragment.setArguments(bundle);
