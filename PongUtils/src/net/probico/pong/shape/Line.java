@@ -90,7 +90,6 @@ public class Line {
 
 		Matrix.translateM(resultMatrix, 0, mModelMatrix, 0, 0, 0, 0);
 
-		// scratch = new float[16];
 		Matrix.multiplyMM(scratch, 0, resultMatrix, 0, mvpMatrix, 0);
 
 		// Apply the projection and view transformation

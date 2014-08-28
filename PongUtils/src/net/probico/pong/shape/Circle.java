@@ -112,7 +112,6 @@ public class Circle {
 
 	}
 
-	// TODO: Clean up. Extract to methods
 	public void draw(float[] mvpMatrix) {
 
 		GLES20.glUseProgram(mProgram);
@@ -135,194 +134,9 @@ public class Circle {
 
 		mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
 
-		if (yTranslateValue <= -0.88
-				&& gameRenderer.getBottomPaddle().getxTranslateValue() <= xTranslateValue + 0.22
-				&& gameRenderer.getBottomPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
+		doPhysics();
 
-			gameRenderer
-					.getActivity()
-					.getSoundPool()
-					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
-							0, 1.0f);
-
-			ballMovingDirectionUp = true;
-
-			if ((gameRenderer.getActivity().getGameMode()
-					.equals(GameMode.TWO_PLAYERS_ONLINE) && ySpeed <= 0.014)
-					|| (gameRenderer.getActivity().getGameMode()
-							.equals(GameMode.TWO_PLAYERS) || gameRenderer
-							.getActivity().getGameMode()
-							.equals(GameMode.SINGLE_PLAYER)) && ySpeed <= 0.03) {
-				ySpeed += 0.002f;
-			}
-
-			xSpeed = 0.01f;
-			if (xTranslateValue > gameRenderer.getBottomPaddle()
-					.getxTranslateValue() + 0.1) {
-				ballMovingDirectionRight = true;
-				xSpeed = ySpeed * 2;
-			} else if (xTranslateValue < gameRenderer.getBottomPaddle()
-					.getxTranslateValue() - 0.1) {
-				ballMovingDirectionRight = false;
-				xSpeed = ySpeed * 2;
-			}
-
-			if (gameRenderer.getActivity().getGameMode()
-					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
-					&& !gameRenderer.getActivity()
-							.isCurrentParticipantInvitee()) {
-				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
-						yTranslateValue, ballMovingDirectionRight,
-						ballMovingDirectionUp, xSpeed, ySpeed);
-			}
-		}
-
-		else if (yTranslateValue >= 0.88
-				&& gameRenderer.getTopPaddle().getxTranslateValue() <= xTranslateValue + 0.22
-				&& gameRenderer.getTopPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
-
-			gameRenderer
-					.getActivity()
-					.getSoundPool()
-					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
-							0, 1.0f);
-			ballMovingDirectionUp = false;
-
-			if ((gameRenderer.getActivity().getGameMode()
-					.equals(GameMode.TWO_PLAYERS_ONLINE) && ySpeed <= 0.014)
-					|| (gameRenderer.getActivity().getGameMode()
-							.equals(GameMode.TWO_PLAYERS) || gameRenderer
-							.getActivity().getGameMode()
-							.equals(GameMode.SINGLE_PLAYER)) && ySpeed <= 0.03) {
-				ySpeed += 0.002f;
-			}
-
-			xSpeed = 0.01f;
-			// If ball meets the edge of the paddle, reverse the horizontal
-			// direction and accelerate
-			if (xTranslateValue > gameRenderer.getTopPaddle()
-					.getxTranslateValue() + 0.1) {
-
-				ballMovingDirectionRight = true;
-				xSpeed = ySpeed * 2;
-			} else if (xTranslateValue < gameRenderer.getTopPaddle()
-					.getxTranslateValue() - 0.1) {
-
-				ballMovingDirectionRight = false;
-				xSpeed = ySpeed * 2;
-
-			}
-
-			if (gameRenderer.getActivity().getGameMode()
-					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
-					&& gameRenderer.getActivity().isCurrentParticipantInvitee()) {
-				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
-						yTranslateValue, ballMovingDirectionRight,
-						ballMovingDirectionUp, xSpeed, ySpeed);
-			}
-		}
-
-		if (xTranslateValue > 0.95) {
-			gameRenderer
-					.getActivity()
-					.getSoundPool()
-					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
-							0, 1.0f);
-			ballMovingDirectionRight = false;
-		}
-
-		else if (xTranslateValue < -0.95) {
-
-			gameRenderer
-					.getActivity()
-					.getSoundPool()
-					.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
-							0, 1.0f);
-			ballMovingDirectionRight = true;
-		}
-
-		if (!(gameRenderer.getActivity().gameOver() || (xSpeed == 0 && ySpeed == 0))) {
-
-			if (ballMovingDirectionUp)
-				yTranslateValue += ySpeed;
-			else
-				yTranslateValue -= ySpeed;
-
-			if (ballMovingDirectionRight) {
-				xTranslateValue += xSpeed;
-
-			} else {
-				xTranslateValue -= xSpeed;
-			}
-		}
-
-		if (this.gameRenderer.getActivity().getGameMode()
-				.equals(GameMode.SINGLE_PLAYER)) {
-
-			float speedRatio = ySpeed != 0 ? xSpeed / ySpeed : 0;
-
-			float robotFactor = 0f;
-
-			if ((gameRenderer.getActivity().getLevel().equals(Level.EASY) && ySpeed > 0.014)
-					|| (gameRenderer.getActivity().getLevel()
-							.equals(Level.HARD) && ySpeed > 0.03)) {
-				robotFactor = 0.20f;
-			}
-
-			if (ballMovingDirectionRight) {
-				this.gameRenderer.getTopPaddle().setxTranslateValue(
-						xTranslateValue - robotFactor * speedRatio);
-			} else {
-				this.gameRenderer.getTopPaddle().setxTranslateValue(
-						xTranslateValue + robotFactor * speedRatio);
-			}
-		}
-
-		if ((yTranslateValue < -0.95 && (gameRenderer.getActivity()
-				.getGameMode().equals(GameMode.SINGLE_PLAYER)
-				|| gameRenderer.getActivity().getGameMode()
-						.equals(GameMode.TWO_PLAYERS) || (gameRenderer
-				.getActivity().getGameMode()
-				.equals(GameMode.TWO_PLAYERS_ONLINE) && !gameRenderer
-				.getActivity().isCurrentParticipantInvitee())))
-				|| (yTranslateValue > 0.95 && (gameRenderer.getActivity()
-						.getGameMode().equals(GameMode.SINGLE_PLAYER)
-						|| gameRenderer.getActivity().getGameMode()
-								.equals(GameMode.TWO_PLAYERS) || (gameRenderer
-						.getActivity().getGameMode()
-						.equals(GameMode.TWO_PLAYERS_ONLINE) && gameRenderer
-						.getActivity().isCurrentParticipantInvitee())))) {
-
-			gameRenderer
-					.getActivity()
-					.getSoundPool()
-					.play(gameRenderer.getActivity().getSoundIds()[1], 1, 1, 1,
-							0, 1.0f);
-			ySpeed = 0.01f;
-			xSpeed = 0.01f;
-			if (yTranslateValue > 0.95) {
-				this.gameRenderer.getActivity().incrementPlayer1Score();
-
-			} else if (yTranslateValue < -0.95) {
-				this.gameRenderer.getActivity().incrementPlayer2Score();
-			}
-			xTranslateValue = 0;
-			yTranslateValue = 0;
-
-			ballMovingDirectionUp = !ballMovingDirectionUp;
-			if (gameRenderer.getActivity().getGameMode()
-					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)) {
-				// Corrective action
-
-				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
-						yTranslateValue, ballMovingDirectionRight,
-						ballMovingDirectionUp, xSpeed, ySpeed);
-				gameRenderer.getActivity().sendUpdateScoreMessage();
-
-			}
-		}
-
-		// translate ball by yTranslateValue
+		// translate ball by xTranslateValue and yTranslateValue
 		final float[] mModelMatrix = new float[16];
 		Matrix.setIdentityM(mModelMatrix, 0); // initialize to identity
 
@@ -344,6 +158,268 @@ public class Circle {
 		// Disable vertex array
 		GLES20.glDisableVertexAttribArray(mPositionHandle);
 
+	}
+
+	/**
+	 * Static values are used by this method to check ball position information.
+	 * For some reason using the expected values through constants doesn't work.
+	 * Something might need to be adjusted in the opengl projection matrix.
+	 * 
+	 * @author samir
+	 */
+	private void doPhysics() {
+
+		doPaddleCollisionPhysics();
+
+		doWallCollisionPhysics();
+
+		updateBallCoordinates();
+
+		// If playing solo, update bot position
+		if (this.gameRenderer.getActivity().getGameMode()
+				.equals(GameMode.SINGLE_PLAYER)) {
+
+			updateBotPosition();
+		}
+
+		doGoalPhysics();
+	}
+
+	private void doGoalPhysics() {
+		// Goal
+		if ((yTranslateValue < -0.95 && (gameRenderer.getActivity()
+				.getGameMode().equals(GameMode.SINGLE_PLAYER)
+				|| gameRenderer.getActivity().getGameMode()
+						.equals(GameMode.TWO_PLAYERS) || (gameRenderer
+				.getActivity().getGameMode()
+				.equals(GameMode.TWO_PLAYERS_ONLINE) && !gameRenderer
+				.getActivity().isCurrentParticipantInvitee())))
+				|| (yTranslateValue > 0.95 && (gameRenderer.getActivity()
+						.getGameMode().equals(GameMode.SINGLE_PLAYER)
+						|| gameRenderer.getActivity().getGameMode()
+								.equals(GameMode.TWO_PLAYERS) || (gameRenderer
+						.getActivity().getGameMode()
+						.equals(GameMode.TWO_PLAYERS_ONLINE) && gameRenderer
+						.getActivity().isCurrentParticipantInvitee())))) {
+
+			// Play sound
+			playGoalSound();
+			
+			resetBallVelocity();
+			
+			incrementPlayerScore();
+			
+			resetBallPosition();
+
+			// Reverse direction
+			ballMovingDirectionUp = !ballMovingDirectionUp;
+			
+			// In online mode, a goal is only a goal if the current player sees that it's a goal.
+			if (gameRenderer.getActivity().getGameMode()
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)) {
+				// Corrective action
+				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
+						yTranslateValue, ballMovingDirectionRight,
+						ballMovingDirectionUp, xSpeed, ySpeed);
+				gameRenderer.getActivity().sendUpdateScoreMessage();
+
+			}
+		}
+	}
+
+	private void resetBallPosition() {
+		// Reset ball coordinates
+		xTranslateValue = 0;
+		yTranslateValue = 0;
+	}
+
+	private void resetBallVelocity() {
+		// Reset ball speed values
+		ySpeed = 0.01f;
+		xSpeed = 0.01f;
+	}
+
+	private void incrementPlayerScore() {
+		// Player 1 scored
+		if (yTranslateValue > 0.95) {
+			this.gameRenderer.getActivity().incrementPlayer1Score();
+
+		}
+		// Player 2 scored
+		else if (yTranslateValue < -0.95) {
+			this.gameRenderer.getActivity().incrementPlayer2Score();
+		}
+	}
+
+	private void playGoalSound() {
+		gameRenderer
+				.getActivity()
+				.getSoundPool()
+				.play(gameRenderer.getActivity().getSoundIds()[1], 1, 1, 1,
+						0, 1.0f);
+	}
+
+	private void updateBotPosition() {
+		float speedRatio = ySpeed != 0 ? xSpeed / ySpeed : 0;
+
+		float robotFactor = 0f;
+
+		if ((gameRenderer.getActivity().getLevel().equals(Level.EASY) && ySpeed > 0.014)
+				|| (gameRenderer.getActivity().getLevel()
+						.equals(Level.HARD) && ySpeed > 0.03)) {
+			robotFactor = 0.20f;
+		}
+
+		if (ballMovingDirectionRight) {
+			this.gameRenderer.getTopPaddle().setxTranslateValue(
+					xTranslateValue - robotFactor * speedRatio);
+		} else {
+			this.gameRenderer.getTopPaddle().setxTranslateValue(
+					xTranslateValue + robotFactor * speedRatio);
+		}
+	}
+
+	private void updateBallCoordinates() {
+		// If game is still ongoing and ball is still moving (game not paused)
+		if (!(gameRenderer.getActivity().gameOver() || (xSpeed == 0 && ySpeed == 0))) {
+
+			// Update x and y ball cooridinates 
+			if (ballMovingDirectionUp)
+				yTranslateValue += ySpeed;
+			else
+				yTranslateValue -= ySpeed;
+
+			if (ballMovingDirectionRight) {
+				xTranslateValue += xSpeed;
+
+			} else {
+				xTranslateValue -= xSpeed;
+			}
+		}
+	}
+
+	private void doWallCollisionPhysics() {
+		// Ball hit right wall. Use of static values is temporary until opengl projection matrix is adjusted
+		if (xTranslateValue > 0.95) {
+			
+			// Play sound
+			playWallCollisionSound();
+			
+			// Reverse horizontal direction
+			ballMovingDirectionRight = false;
+		}
+
+		// Ball hit right wall. Use of static values is temporary until opengl projection matrix is adjusted
+		else if (xTranslateValue < -0.95) {
+			// Play sound
+			playWallCollisionSound();
+			
+			// Reverse horizontal direction
+			ballMovingDirectionRight = true;
+		}
+	}
+
+	private void playWallCollisionSound() {
+		gameRenderer
+				.getActivity()
+				.getSoundPool()
+				.play(gameRenderer.getActivity().getSoundIds()[0], 1, 1, 1,
+						0, 1.0f);
+	}
+
+	private void doPaddleCollisionPhysics() {
+		// Ball hit bottom paddle
+		if (yTranslateValue <= -0.88
+				&& gameRenderer.getBottomPaddle().getxTranslateValue() <= xTranslateValue + 0.22
+				&& gameRenderer.getBottomPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
+
+			playWallCollisionSound();
+
+			// Reverse ball vertical speed
+			ballMovingDirectionUp = true;
+
+			// Accelerate ball if maximum speed has not been reached yet
+			if ((gameRenderer.getActivity().getGameMode()
+					.equals(GameMode.TWO_PLAYERS_ONLINE) && ySpeed <= 0.014)
+					|| (gameRenderer.getActivity().getGameMode()
+							.equals(GameMode.TWO_PLAYERS) || gameRenderer
+							.getActivity().getGameMode()
+							.equals(GameMode.SINGLE_PLAYER)) && ySpeed <= 0.03) {
+				ySpeed += 0.002f;
+			}
+
+			// Return xSpeed to initial value
+			xSpeed = 0.01f;
+
+			// Ball hit edge. Reverse the horizontal direction and make the ball
+			// move with a greater angle
+			if (xTranslateValue > gameRenderer.getBottomPaddle()
+					.getxTranslateValue() + 0.1) {
+				ballMovingDirectionRight = true;
+				xSpeed = ySpeed * 2;
+			} else if (xTranslateValue < gameRenderer.getBottomPaddle()
+					.getxTranslateValue() - 0.1) {
+				ballMovingDirectionRight = false;
+				xSpeed = ySpeed * 2;
+			}
+
+			// If playing online, send new ball position and velocity info to opponent
+			if (gameRenderer.getActivity().getGameMode()
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
+					&& !gameRenderer.getActivity()
+							.isCurrentParticipantInvitee()) {
+				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
+						yTranslateValue, ballMovingDirectionRight,
+						ballMovingDirectionUp, xSpeed, ySpeed);
+			}
+		}
+		// Ball hit top paddle
+		else if (yTranslateValue >= 0.88
+				&& gameRenderer.getTopPaddle().getxTranslateValue() <= xTranslateValue + 0.22
+				&& gameRenderer.getTopPaddle().getxTranslateValue() >= xTranslateValue - 0.22) {
+
+			playWallCollisionSound();
+			
+			// Reverse ball vertical moving direction
+			ballMovingDirectionUp = false;
+
+			// Accelerate ball if maximum speed has not been reached yet
+			if ((gameRenderer.getActivity().getGameMode()
+					.equals(GameMode.TWO_PLAYERS_ONLINE) && ySpeed <= 0.014)
+					|| (gameRenderer.getActivity().getGameMode()
+							.equals(GameMode.TWO_PLAYERS) || gameRenderer
+							.getActivity().getGameMode()
+							.equals(GameMode.SINGLE_PLAYER)) && ySpeed <= 0.03) {
+				ySpeed += 0.002f;
+			}
+
+			// Return xSpeed to initial value
+			xSpeed = 0.01f;
+			
+			// If ball meets the edge of the paddle, reverse the horizontal
+			// direction and accelerate
+			if (xTranslateValue > gameRenderer.getTopPaddle()
+					.getxTranslateValue() + 0.1) {
+
+				ballMovingDirectionRight = true;
+				xSpeed = ySpeed * 2;
+			} else if (xTranslateValue < gameRenderer.getTopPaddle()
+					.getxTranslateValue() - 0.1) {
+
+				ballMovingDirectionRight = false;
+				xSpeed = ySpeed * 2;
+
+			}
+
+			// If playing online, send new ball position and velocity info to opponent
+			if (gameRenderer.getActivity().getGameMode()
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
+					&& gameRenderer.getActivity().isCurrentParticipantInvitee()) {
+				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
+						yTranslateValue, ballMovingDirectionRight,
+						ballMovingDirectionUp, xSpeed, ySpeed);
+			}
+		}
 	}
 
 	public float getySpeed() {
