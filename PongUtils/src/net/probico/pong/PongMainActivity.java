@@ -406,14 +406,6 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 	}
 
-	public void sendMessage(String message) {
-
-		byte[] messageData = message.getBytes(Charset.forName("UTF-8"));
-		Games.RealTimeMultiplayer.sendUnreliableMessageToOthers(getApiClient(),
-				messageData, room.getRoomId());
-
-	}
-
 	private RoomConfig.Builder makeBasicRoomConfigBuilder() {
 		return RoomConfig.builder(this).setMessageReceivedListener(this)
 				.setRoomStatusUpdateListener(this);
@@ -472,65 +464,31 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 
 	@Override
 	public void onRealTimeMessageReceived(RealTimeMessage rtm) {
-		// get real-time message
+		// get real-time message and decode it
 		byte[] messageData = rtm.getMessageData();
-
 		String message = new String(messageData, Charset.forName("UTF-8"));
 
 		String[] messageComponents = message.split(" ");
 
-		// TODO: Clean up. Extract actions to methods
+		// Move opponent's paddle on screen
 		if (messageComponents[0].equals(MESSAGE_PADDLE_COORDINATES)) {
-			if (!isCurrentParticipantInvitee()) {
-				glSurfaceView
-						.getRenderer()
-						.getTopPaddle()
-						.setxTranslateValue(
-								Float.parseFloat(messageComponents[1]));
-			} else {
-				glSurfaceView
-						.getRenderer()
-						.getBottomPaddle()
-						.setxTranslateValue(
-								Float.parseFloat(messageComponents[1]));
-			}
+			updateOpponentPaddlePosition(Float.parseFloat(messageComponents[1]));
 
 		} else if (messageComponents[0].equals(MESSAGE_BALL_INFORMATION)) {
 			float xTranslateValue = Float.parseFloat(messageComponents[1]);
 			float yTranslateValue = Float.parseFloat(messageComponents[2]);
 
-			float ballXSpeed = glSurfaceView.getRenderer().getBall()
-					.getxSpeed();
-			float ballYSpeed = glSurfaceView.getRenderer().getBall()
-					.getySpeed();
+			boolean ballMovingDirectionRight = Boolean
+					.parseBoolean(messageComponents[3]);
+			boolean ballMovingDirectionUp = Boolean
+					.parseBoolean(messageComponents[4]);
 
-			if (Math.abs(glSurfaceView.getRenderer().getBall()
-					.getyTranslateValue()
-					- yTranslateValue) > (ballYSpeed * 0.15 / 0.01)
-					|| Math.abs(glSurfaceView.getRenderer().getBall()
-							.getxTranslateValue()
-							- xTranslateValue) > (ballXSpeed * 0.15 / 0.01)) {
+			float xSpeed = Float.parseFloat(messageComponents[5]);
+			float ySpeed = Float.parseFloat(messageComponents[6]);
 
-				glSurfaceView.getRenderer().getBall()
-						.setxTranslateValue(xTranslateValue);
-				glSurfaceView.getRenderer().getBall()
-						.setyTranslateValue(yTranslateValue);
-			}
-			glSurfaceView
-					.getRenderer()
-					.getBall()
-					.setBallMovingDirectionRight(
-							Boolean.parseBoolean(messageComponents[3]));
-			glSurfaceView
-					.getRenderer()
-					.getBall()
-					.setBallMovingDirectionUp(
-							Boolean.parseBoolean(messageComponents[4]));
-
-			glSurfaceView.getRenderer().getBall()
-					.setxSpeed(Float.parseFloat(messageComponents[5]));
-			glSurfaceView.getRenderer().getBall()
-					.setySpeed(Float.parseFloat(messageComponents[6]));
+			correctBallPositionAndVelocity(xTranslateValue, yTranslateValue,
+					ballMovingDirectionRight, ballMovingDirectionUp, xSpeed,
+					ySpeed);
 
 		}
 
@@ -544,6 +502,51 @@ public abstract class PongMainActivity extends BaseGameActivity implements
 			checkGameOver();
 		}
 
+	}
+
+	private void correctBallPositionAndVelocity(float xTranslateValue, float yTranslateValue,
+			boolean ballMovingDirectionRight, boolean ballMovingDirectionUp,
+			float xSpeed, float ySpeed) {
+		float ballXSpeed = glSurfaceView.getRenderer().getBall()
+				.getxSpeed();
+		float ballYSpeed = glSurfaceView.getRenderer().getBall()
+				.getySpeed();
+
+		// Only correct ball position if it needs correction (happens when
+		// the connection is slow or when one device renders the screen
+		// relatively faster than the other device)
+		if (Math.abs(glSurfaceView.getRenderer().getBall()
+				.getyTranslateValue()
+				- yTranslateValue) > (ballYSpeed * 0.15 / 0.01)
+				|| Math.abs(glSurfaceView.getRenderer().getBall()
+						.getxTranslateValue()
+						- xTranslateValue) > (ballXSpeed * 0.15 / 0.01)) {
+
+			glSurfaceView.getRenderer().getBall()
+					.setxTranslateValue(xTranslateValue);
+			glSurfaceView.getRenderer().getBall()
+					.setyTranslateValue(yTranslateValue);
+		}
+
+		// Correct ball velocity information to ensure that game is
+		// synchronized between both devices
+		glSurfaceView.getRenderer().getBall()
+				.setBallMovingDirectionRight(ballMovingDirectionRight);
+		glSurfaceView.getRenderer().getBall()
+				.setBallMovingDirectionUp(ballMovingDirectionUp);
+
+		glSurfaceView.getRenderer().getBall().setxSpeed(xSpeed);
+		glSurfaceView.getRenderer().getBall().setySpeed(ySpeed);
+	}
+
+	private void updateOpponentPaddlePosition(Float xPosition) {
+		if (!isCurrentParticipantInvitee()) {
+			glSurfaceView.getRenderer().getTopPaddle()
+					.setxTranslateValue(xPosition);
+		} else {
+			glSurfaceView.getRenderer().getBottomPaddle()
+					.setxTranslateValue(xPosition);
+		}
 	}
 
 	@Override
