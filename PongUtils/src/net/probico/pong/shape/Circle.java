@@ -4,9 +4,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import net.probico.pong.MainActivity;
-import net.probico.pong.MainActivity.GameMode;
-import net.probico.pong.MainActivity.Level;
+import net.probico.pong.PongMainActivity;
+import net.probico.pong.PongMainActivity.GameMode;
+import net.probico.pong.PongMainActivity.Level;
 import net.probico.pong.opengl.PongGLRenderer;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
@@ -168,7 +168,7 @@ public class Circle {
 			}
 
 			if (gameRenderer.getActivity().getGameMode()
-					.equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 					&& !gameRenderer.getActivity()
 							.isCurrentParticipantInvitee()) {
 				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
@@ -220,7 +220,7 @@ public class Circle {
 			}
 
 			if (gameRenderer.getActivity().getGameMode()
-					.equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 					&& gameRenderer.getActivity().isCurrentParticipantInvitee()) {
 				gameRenderer.getActivity().sendBallInformation(xTranslateValue,
 						yTranslateValue, ballMovingDirectionRight,
@@ -310,7 +310,7 @@ public class Circle {
 
 			ballMovingDirectionUp = !ballMovingDirectionUp;
 			if (gameRenderer.getActivity().getGameMode()
-					.equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)) {
+					.equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)) {
 				// && ((gameRenderer.getActivity().isCurrentParticipantInvitee()
 				// && yTranslateValue > 0.9) ||
 				// (!gameRenderer.getActivity().isCurrentParticipantInvitee() &&
@@ -326,18 +326,18 @@ public class Circle {
 		}
 
 		// if(yTranslateValue > 0.9 &&
-		// ((gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.SINGLE_PLAYER)
+		// ((gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.SINGLE_PLAYER)
 		// ||
-		// gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS)
+		// gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS)
 		// ||
-		// (gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+		// (gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 		// && gameRenderer.getActivity().isCurrentParticipantInvitee())))){
 		//
 		// this.gameRenderer.getActivity().incrementPlayer1Score();
 		// xTranslateValue = 0;
 		// yTranslateValue = 0;
 		//
-		// if(gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)){
+		// if(gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)){
 		// gameRenderer.getActivity().sendBallCoordinates(xTranslateValue,
 		// yTranslateValue);
 		// gameRenderer.getActivity().sendUpdateScoreMessage();
@@ -345,18 +345,18 @@ public class Circle {
 		// }
 		//
 		// if(yTranslateValue < -0.9 &&
-		// ((gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.SINGLE_PLAYER)
+		// ((gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.SINGLE_PLAYER)
 		// ||
-		// gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS)
+		// gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS)
 		// ||
-		// (gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+		// (gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 		// && !gameRenderer.getActivity().isCurrentParticipantInvitee())))){
 		//
 		// this.gameRenderer.getActivity().incrementPlayer2Score();
 		// xTranslateValue = 0;
 		// yTranslateValue = 0;
 		//
-		// if(gameRenderer.getActivity().getGameMode().equals(MainActivity.GameMode.TWO_PLAYERS_ONLINE)){
+		// if(gameRenderer.getActivity().getGameMode().equals(PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)){
 		// gameRenderer.getActivity().sendBallCoordinates(xTranslateValue,
 		// yTranslateValue);
 		// gameRenderer.getActivity().sendUpdateScoreMessage();

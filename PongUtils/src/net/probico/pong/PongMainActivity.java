@@ -67,8 +67,8 @@ import com.google.example.games.basegameutils.BaseGameActivity;
  * 
  * @author Bruno Oliveira
  */
-public abstract class MainActivity extends BaseGameActivity implements
-		MainMenuFragment.Listener, LevelSelectionFragment.Listener,
+public abstract class PongMainActivity extends BaseGameActivity implements
+		PongMainMenuFragment.Listener, PongLevelSelectionFragment.Listener,
 		RoomUpdateListener, RealTimeMessageReceivedListener,
 		RoomStatusUpdateListener, OnInvitationReceivedListener, Serializable {
 
@@ -181,12 +181,12 @@ public abstract class MainActivity extends BaseGameActivity implements
 	final static int MIN_PLAYERS = 2;
 
 	// Fragments
-	MainMenuFragment mMainMenuFragment;
-	GameplayFragment mGameplayFragment;
+	PongMainMenuFragment mMainMenuFragment;
+	PongGameplayFragment mGameplayFragment;
 
-	LevelSelectionFragment mLevelSelectionFragment;
+	PongLevelSelectionFragment mLevelSelectionFragment;
 
-	public GameplayFragment getmGameplayFragment() {
+	public PongGameplayFragment getmGameplayFragment() {
 		return mGameplayFragment;
 	}
 
@@ -214,13 +214,14 @@ public abstract class MainActivity extends BaseGameActivity implements
 
 		// Create a GLSurfaceView instance and set it
 		// as the ContentView for this Activity
-		glSurfaceView = new PongGLSurfaceView(this);
+		glSurfaceView = getPongGlSurfaceView();
 
 		setContentView(R.layout.activity_main);
 
 		// create fragments
-		mLevelSelectionFragment = new LevelSelectionFragment();
-		mGameplayFragment = GameplayFragment.newInstance(this);
+		mMainMenuFragment = getPongMainMenuFragment();
+		mLevelSelectionFragment = getPongLevelSelectionFragment();
+		mGameplayFragment = getPongGamePlayFragment();
 
 		// listen to fragment events
 		mMainMenuFragment.setListener(this);
@@ -239,6 +240,14 @@ public abstract class MainActivity extends BaseGameActivity implements
 		AppRater.app_launched(this);
 
 	}
+	
+	public abstract PongLevelSelectionFragment getPongLevelSelectionFragment();
+
+	public abstract PongMainMenuFragment getPongMainMenuFragment();
+
+	public abstract PongGLSurfaceView getPongGlSurfaceView() ;
+
+	protected abstract PongGameplayFragment getPongGamePlayFragment();
 
 	// Switch UI to the given fragment
 	void switchToFragment(Fragment newFrag) {
@@ -782,7 +791,7 @@ public abstract class MainActivity extends BaseGameActivity implements
 //			AppsZoom.fetchAd(null, new AppsZoom.OnAdFetchedListener() {
 //				@Override
 //				public void onAdFetched() {
-//					AppsZoom.showAd(MainActivity.this);
+//					AppsZoom.showAd(PongMainActivity.this);
 //				}
 //			});
 
@@ -800,7 +809,7 @@ public abstract class MainActivity extends BaseGameActivity implements
 			public void run() {
 				// 1. Instantiate an AlertDialog.Builder with its constructor
 				AlertDialog.Builder builder = new AlertDialog.Builder(
-						MainActivity.this);
+						PongMainActivity.this);
 
 				// 2. Chain together various setter methods to set the dialog
 				// characteristics
@@ -917,13 +926,13 @@ public abstract class MainActivity extends BaseGameActivity implements
 	public void onInvitationReceived(Invitation invitation) {
 		// show in-game popup to let user know of pending invitation
 		// 1. Instantiate an AlertDialog.Builder with its constructor
-		AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(PongMainActivity.this);
 
 		// 2. Chain together various setter methods to set the dialog
 		// characteristics
 		builder.setMessage(
 				invitation.getInviter().getDisplayName()
-						+ " invited you to play Multipong. Would you like to accept the invitation?")
+						+ " invited you to play Pong. Would you like to accept the invitation?")
 				.setTitle(R.string.incoming_invitation);
 
 		// Add the buttons
@@ -941,7 +950,7 @@ public abstract class MainActivity extends BaseGameActivity implements
 						getWindow().addFlags(
 								WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-						// MainActivity.this.gameMode =
+						// PongMainActivity.this.gameMode =
 						// GameMode.TWO_PLAYERS_ONLINE;
 						// switchToFragment(mGameplayFragment);
 

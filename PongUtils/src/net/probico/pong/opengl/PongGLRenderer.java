@@ -18,7 +18,7 @@ package net.probico.pong.opengl;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import net.probico.pong.MainActivity;
+import net.probico.pong.PongMainActivity;
 import net.probico.pong.common.RawResourceReader;
 import net.probico.pong.shape.Circle;
 import net.probico.pong.shape.Line;
@@ -40,12 +40,12 @@ import com.example.pongutils.R;
  * <li>{@link android.opengl.GLSurfaceView.Renderer#onSurfaceChanged}</li>
  * </ul>
  */
-public class PongGLRenderer implements GLSurfaceView.Renderer {
+public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 
 	private float widthToHeightRatio;
-	
-	
+
 	private boolean firstRender = true;
+
 	public void setFirstRender(boolean firstRender) {
 		this.firstRender = firstRender;
 	}
@@ -58,23 +58,23 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 	private Context context;
 
 	private Line separator;
-	
+
 	private Rectangle background;
-	
+
 	final static float PADDLE_WIDTH = 0.6f;
 	final static float PADDLE_HEIGHT = 0.15f;
-	
+
 	// Calculated visible width of the screen
-//	final static float SCREEN_WIDTH = 2.95f;
+	// final static float SCREEN_WIDTH = 2.95f;
 	// Distance from center to nearest edge of the paddle
 	final static float CENTER_TO_PADDLE = 2.15f;
-	
+
 	final static float CENTER_TO_VERTICAL_EDGE = 2.4f;
 
 	public PongGLRenderer(Context context) {
 		this.context = context;
-		if (context instanceof MainActivity) {
-			activity = (MainActivity) context;
+		if (context instanceof PongMainActivity) {
+			activity = (PongMainActivity) context;
 		}
 	}
 
@@ -97,7 +97,8 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 	private Rectangle topPaddle;
 
 	private Circle circle;
-//	private Ball ball;
+
+	// private Ball ball;
 
 	public Circle getBall() {
 		return circle;
@@ -115,13 +116,13 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 	private final float[] mModelMatrix = new float[16];
 
 	private float mAngle;
-	private MainActivity activity = null;
+	private PongMainActivity activity = null;
 
-	public MainActivity getActivity() {
+	public PongMainActivity getActivity() {
 		return activity;
 	}
 
-	public void setActivity(MainActivity activity) {
+	public void setActivity(PongMainActivity activity) {
 		this.activity = activity;
 	}
 
@@ -133,15 +134,41 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 		// Set the background frame color
 		GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-		separator = new Line(this, new float[] { -1.45f, 0.0f, 0.0f, 
-				1.45f, 0.0f, 0.0f });
+		bottomPaddle = new Rectangle(this, new float[] { -PADDLE_WIDTH / 2,
+				-CENTER_TO_PADDLE, 0.0f, // top
+				// left
+				-PADDLE_WIDTH / 2, -CENTER_TO_PADDLE - PADDLE_HEIGHT, 0.0f, // bottom
+																			// left
+				PADDLE_WIDTH / 2, -CENTER_TO_PADDLE - PADDLE_HEIGHT, 0.0f, // bottom
+																			// right
+				PADDLE_WIDTH / 2, -CENTER_TO_PADDLE, 0.0f },
+				getPaddleTextureResourceId(), false); // top right)
+
+		topPaddle = new Rectangle(this, new float[] { -PADDLE_WIDTH / 2,
+				CENTER_TO_PADDLE + PADDLE_HEIGHT, 0.0f, // top
+				// left
+				-PADDLE_WIDTH / 2, CENTER_TO_PADDLE, 0.0f, // bottom left
+				PADDLE_WIDTH / 2, CENTER_TO_PADDLE, 0.0f, // bottom right
+				PADDLE_WIDTH / 2, CENTER_TO_PADDLE + PADDLE_HEIGHT, 0.0f },
+				getPaddleTextureResourceId(), true); // top right)
+
+		separator = new Line(this, new float[] { -1.45f, 0.0f, 0.0f, 1.45f,
+				0.0f, 0.0f });
 
 		circle = new Circle(this);
-		
-//		ball = new Ball(this);
-		// mTriangle = new Triangle();
-		// mSquare = new Square();
+
+		background = new Rectangle(this, new float[] { -1.45f,
+				CENTER_TO_VERTICAL_EDGE, 0.0f, // top
+				// left
+				-1.45f, -CENTER_TO_VERTICAL_EDGE, 0.0f, // bottom left
+				1.45f, -CENTER_TO_VERTICAL_EDGE, 0.0f, // bottom right
+				1.45f, CENTER_TO_VERTICAL_EDGE, 0.0f },
+				getBackgroundTextureResourceId(), false); // top right)
 	}
+
+	public abstract int getBackgroundTextureResourceId();
+
+	public abstract int getPaddleTextureResourceId();
 
 	@Override
 	public void onDrawFrame(GL10 unused) {
@@ -187,28 +214,29 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 		// // Note that the mMVPMatrix factor *must be first* in order
 		// // for the matrix multiplication product to be correct.
 		// Matrix.multiplyMM(scratch, 0, resultMatrix, 0, mMVPMatrix, 0);
-		
-//		background.setTextureId(R.drawable.backgroundpattern_space);
+
+		// background.setTextureId(R.drawable.backgroundpattern_space);
 		background.draw(mMVPMatrix);
-		
-//		bottomPaddle.setTextureId(R.drawable.paddle_green);
+
+		// bottomPaddle.setTextureId(R.drawable.paddle_green);
 		bottomPaddle.draw(mMVPMatrix);
-		
-//		topPaddle.setTextureId(R.drawable.paddle_green);
+
+		// topPaddle.setTextureId(R.drawable.paddle_green);
 		topPaddle.draw(mMVPMatrix);
-		
+
 		circle.draw(mMVPMatrix);
-		
-//		separator.setColor(new float[]{0.482352941f, 0f, 0.254901961f, 1.0f});
-		separator.setColor(new float[]{0f, 1f, 0f, 1.0f});
+
+		// separator.setColor(new float[]{0.482352941f, 0f, 0.254901961f,
+		// 1.0f});
+		separator.setColor(new float[] { 0f, 1f, 0f, 1.0f });
 		separator.draw(mMVPMatrix);
-		
-		if(secondRender){
+
+		if (secondRender) {
 			activity.getmGameplayFragment().showCountDown();
 			secondRender = false;
 		}
-		
-		if(firstRender){
+
+		if (firstRender) {
 			firstRender = false;
 			secondRender = true;
 		}
@@ -239,17 +267,16 @@ public class PongGLRenderer implements GLSurfaceView.Renderer {
 		this.screenWidth = screenWidth;
 	}
 
-	
-	public String getVertexShader()
-	{
-		return RawResourceReader.readTextFileFromRawResource(context, R.raw.per_pixel_vertex_shader);
+	public String getVertexShader() {
+		return RawResourceReader.readTextFileFromRawResource(context,
+				R.raw.per_pixel_vertex_shader);
 	}
-	
-	public String getFragmentShader()
-	{
-		return RawResourceReader.readTextFileFromRawResource(context, R.raw.per_pixel_fragment_shader);
+
+	public String getFragmentShader() {
+		return RawResourceReader.readTextFileFromRawResource(context,
+				R.raw.per_pixel_fragment_shader);
 	}
-	
+
 	/**
 	 * Utility method for compiling a OpenGL shader.
 	 * 

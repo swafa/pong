@@ -207,41 +207,24 @@ containing a value of this type.
         public static int common_signin_btn_text_normal_light=0x7f020015;
         public static int common_signin_btn_text_pressed_dark=0x7f020016;
         public static int common_signin_btn_text_pressed_light=0x7f020017;
-        public static int ic_launcher=0x7f020018;
-        public static int ic_plusone_medium_off_client=0x7f020019;
-        public static int ic_plusone_small_off_client=0x7f02001a;
-        public static int ic_plusone_standard_off_client=0x7f02001b;
-        public static int ic_plusone_tall_off_client=0x7f02001c;
+        public static int ic_plusone_medium_off_client=0x7f020018;
+        public static int ic_plusone_small_off_client=0x7f020019;
+        public static int ic_plusone_standard_off_client=0x7f02001a;
+        public static int ic_plusone_tall_off_client=0x7f02001b;
     }
     public static final class id {
-        public static int easy_button=0x7f060008;
         public static int fragment_container=0x7f060005;
-        public static int hard_button=0x7f060009;
-        public static int hello=0x7f06000a;
         public static int hybrid=0x7f060004;
-        public static int invitations_button=0x7f06000e;
         public static int none=0x7f060000;
         public static int normal=0x7f060001;
         public static int satellite=0x7f060002;
-        public static int screen_gameplay=0x7f060006;
-        public static int screen_menu=0x7f060007;
-        public static int sign_in_bar=0x7f06000f;
-        public static int sign_in_button=0x7f060010;
-        public static int sign_out_bar=0x7f060011;
-        public static int sign_out_button=0x7f060012;
-        public static int single_player_button=0x7f06000b;
         public static int terrain=0x7f060003;
-        public static int two_players_button=0x7f06000c;
-        public static int two_players_online_button=0x7f06000d;
     }
     public static final class integer {
         public static int google_play_services_version=0x7f080000;
     }
     public static final class layout {
         public static int activity_main=0x7f030000;
-        public static int fragment_gameplay=0x7f030001;
-        public static int fragment_level_selection=0x7f030002;
-        public static int fragment_mainmenu=0x7f030003;
     }
     public static final class raw {
         public static int blop=0x7f040000;

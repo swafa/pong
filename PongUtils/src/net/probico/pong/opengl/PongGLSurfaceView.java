@@ -15,7 +15,7 @@
  */
 package net.probico.pong.opengl;
 
-import net.probico.pong.MainActivity;
+import net.probico.pong.PongMainActivity;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
@@ -26,14 +26,14 @@ import android.widget.Toast;
  * can also be used to capture touch events, such as a user interacting with
  * drawn objects.
  */
-public class PongGLSurfaceView extends GLSurfaceView {
+public abstract class PongGLSurfaceView extends GLSurfaceView {
 
 	private final PongGLRenderer renderer;
 
 	float mPreviousXBottom;
 	float mPreviousXTop;
 
-	MainActivity activity;
+	PongMainActivity activity;
 
 	public PongGLRenderer getRenderer() {
 		return renderer;
@@ -43,20 +43,22 @@ public class PongGLSurfaceView extends GLSurfaceView {
 		super(context);
 
 		this.setId(10);
-		if (context instanceof MainActivity) {
-			activity = (MainActivity) context;
+		if (context instanceof PongMainActivity) {
+			activity = (PongMainActivity) context;
 		}
 
 		// Create an OpenGL ES 2.0 context.
 		setEGLContextClientVersion(2);
 
 		// Set the Renderer for drawing on the GLSurfaceView
-		renderer = new PongGLRenderer(context);
+		renderer = getPongGLRenderer(context);
 		setRenderer(renderer);
 
 		// Render the view only when there is a change in the drawing data
 //		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 	}
+
+	public abstract PongGLRenderer getPongGLRenderer(Context context);
 
 	private final float TOUCH_SCALE_FACTOR = 2f;
 
@@ -100,11 +102,11 @@ public class PongGLSurfaceView extends GLSurfaceView {
 				// Move bottom paddle
 				if (y > getHeight() / 2) {
 					if (this.activity.getGameMode().equals(
-							MainActivity.GameMode.SINGLE_PLAYER)
+							PongMainActivity.GameMode.SINGLE_PLAYER)
 							|| this.activity.getGameMode().equals(
-									MainActivity.GameMode.TWO_PLAYERS)
+									PongMainActivity.GameMode.TWO_PLAYERS)
 							|| (this.activity.getGameMode().equals(
-									MainActivity.GameMode.TWO_PLAYERS_ONLINE) && !renderer
+									PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && !renderer
 									.getActivity()
 									.isCurrentParticipantInvitee())) {
 //						dxBottom = x - mPreviousXBottom;
@@ -119,7 +121,7 @@ public class PongGLSurfaceView extends GLSurfaceView {
 //						mPreviousXBottom = x;
 
 						if (this.activity.getGameMode().equals(
-								MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+								PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 								&& !renderer.getActivity()
 										.isCurrentParticipantInvitee()) {
 							activity.sendPaddleX(getRenderer().getBottomPaddle().getxTranslateValue());
@@ -132,9 +134,9 @@ public class PongGLSurfaceView extends GLSurfaceView {
 				// Move Top paddle
 				else {
 					if (this.activity.getGameMode().equals(
-									MainActivity.GameMode.TWO_PLAYERS)
+									PongMainActivity.GameMode.TWO_PLAYERS)
 							|| (this.activity.getGameMode().equals(
-									MainActivity.GameMode.TWO_PLAYERS_ONLINE) && renderer
+									PongMainActivity.GameMode.TWO_PLAYERS_ONLINE) && renderer
 									.getActivity()
 									.isCurrentParticipantInvitee())) {
 //						dxTop = x - mPreviousXTop;
@@ -151,7 +153,7 @@ public class PongGLSurfaceView extends GLSurfaceView {
 								-1f + (x / getRenderer().getScreenWidth()) * 2f);
 
 						if (this.activity.getGameMode().equals(
-								MainActivity.GameMode.TWO_PLAYERS_ONLINE)
+								PongMainActivity.GameMode.TWO_PLAYERS_ONLINE)
 								&& renderer.getActivity()
 										.isCurrentParticipantInvitee()) {
 							activity.sendPaddleX(getRenderer().getTopPaddle().getxTranslateValue());

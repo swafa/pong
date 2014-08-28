@@ -15,9 +15,6 @@
 
 package net.probico.pong;
 
-
-import com.example.pongutils.R;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,8 +23,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class LevelSelectionFragment extends Fragment implements OnClickListener {
+public abstract class PongLevelSelectionFragment extends Fragment implements
+		OnClickListener {
 	String mGreeting = "";
+
+	int easyBtnResourceId;
+	int hardBtnResourceId;
+	int greetingResourceId;
 
 	public interface Listener {
 
@@ -42,16 +44,32 @@ public class LevelSelectionFragment extends Fragment implements OnClickListener 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_level_selection, container, false);
+		View v = inflater.inflate(getLayoutResourceId(), container, false);
 
+		initResourceIds();
 
-		final int[] CLICKABLES = new int[] { R.id.easy_button, R.id.hard_button };
+		final int[] CLICKABLES = new int[] { easyBtnResourceId,
+				hardBtnResourceId };
 		for (int i : CLICKABLES) {
 			v.findViewById(i).setOnClickListener(this);
 		}
 
 		return v;
 	}
+
+	private void initResourceIds() {
+		easyBtnResourceId = getEasyButtonResourceId();
+		hardBtnResourceId = getHardButtonResourceId();
+		greetingResourceId = getGreetingResourceId();
+	}
+
+	public abstract int getEasyButtonResourceId();
+
+	public abstract int getHardButtonResourceId();
+
+	public abstract int getGreetingResourceId();
+
+	public abstract int getLayoutResourceId();
 
 	public void setListener(Listener l) {
 		mListener = l;
@@ -71,7 +89,7 @@ public class LevelSelectionFragment extends Fragment implements OnClickListener 
 	void updateUi() {
 		if (getActivity() == null)
 			return;
-		TextView tv = (TextView) getActivity().findViewById(R.id.hello);
+		TextView tv = (TextView) getActivity().findViewById(greetingResourceId);
 		if (tv != null)
 			tv.setText(mGreeting);
 	}
@@ -79,11 +97,11 @@ public class LevelSelectionFragment extends Fragment implements OnClickListener 
 	@Override
 	public void onClick(View view) {
 		int id = view.getId();
-		if (id == R.id.easy_button) {
+		if (id == easyBtnResourceId) {
 			mListener.onEasyButtonClicked();
 		}
 
-		else if (id == R.id.hard_button) {
+		else if (id == hardBtnResourceId) {
 			mListener.onHardButtonClicked();
 		}
 

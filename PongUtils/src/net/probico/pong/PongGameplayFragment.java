@@ -16,7 +16,7 @@
 
 package net.probico.pong;
 
-import net.probico.pong.MainActivity.GameMode;
+import net.probico.pong.PongMainActivity.GameMode;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,7 +39,7 @@ import com.google.android.gms.games.Games;
  * @author Bruno Oliveira (Google)
  * 
  */
-public class GameplayFragment extends Fragment {
+public abstract class PongGameplayFragment extends Fragment {
 	// int mRequestedScore = 5000;
 	//
 	// static int[] MY_BUTTONS = {
@@ -56,7 +56,7 @@ public class GameplayFragment extends Fragment {
 	// Listener mListener = null;
 
 	private static final String MAIN_ACTIVITY_KEY = "main_activity_key";
-	private MainActivity activity;
+	private PongMainActivity activity;
 
 	TextView countDownTxtView;
 
@@ -71,35 +71,29 @@ public class GameplayFragment extends Fragment {
 
 	FrameLayout gameLayout;
 
-	// public GameplayFragment(MainActivity activity){
+	// public PongGameplayFragment(PongMainActivity activity){
 	// this.activity = activity;
 	// }
-
-	public static GameplayFragment newInstance(MainActivity mainActivity) {
-		GameplayFragment fragment = new GameplayFragment();
-		Bundle bundle = new Bundle();
-		bundle.putSerializable(MAIN_ACTIVITY_KEY, mainActivity);
-		fragment.setArguments(bundle);
-
-		return fragment;
-
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_gameplay, container, false);
+		View v = inflater.inflate(getLayoutResourceId(), container, false);
 		// for (int i : MY_BUTTONS) {
 		// ((Button) v.findViewById(i)).setOnClickListener(this);
 		// }
 
-		gameLayout = (FrameLayout) v.findViewById(R.id.screen_gameplay);
-		activity = (MainActivity) getArguments().getSerializable(
+		gameLayout = (FrameLayout) v.findViewById(getGameLayoutResourceId());
+		activity = (PongMainActivity) getArguments().getSerializable(
 				MAIN_ACTIVITY_KEY);
 
 		inflateGameLayout();
 		return v;
 	}
+	
+	public abstract int getGameLayoutResourceId();
+
+	protected abstract int getLayoutResourceId();
 
 	public void inflateGameLayout() {
 
