@@ -26,4 +26,14 @@ public class GLRenderer extends PongGLRenderer {
 		return R.drawable.paddle_green;
 	}
 
+	@Override
+	public float[] getBallColor() {
+		return new float[]{1, 0, 0, 1};
+	}
+
+	@Override
+	public float[] getSeperatorColor() {
+		return new float[]{0, 1, 0, 1};
+	}
+
 }
