@@ -23,6 +23,7 @@ import java.util.List;
 
 import net.probico.pong.common.AppRater;
 import net.probico.pong.opengl.PongGLSurfaceView;
+import net.probico.pongutils.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -35,7 +36,6 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.pongutils.R;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;

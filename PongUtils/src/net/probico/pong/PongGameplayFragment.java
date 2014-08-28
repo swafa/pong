@@ -17,6 +17,7 @@
 package net.probico.pong;
 
 import net.probico.pong.PongMainActivity.GameMode;
+import net.probico.pongutils.R;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,7 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.example.pongutils.R;
 import com.google.android.gms.games.Games;
 
 /**

@@ -23,13 +23,13 @@ import net.probico.pong.common.RawResourceReader;
 import net.probico.pong.shape.Circle;
 import net.probico.pong.shape.Line;
 import net.probico.pong.shape.Rectangle;
+import net.probico.pongutils.R;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import com.example.pongutils.R;
 
 /**
  * Provides drawing instructions for a GLSurfaceView object. This class must
