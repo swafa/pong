@@ -145,6 +145,9 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 	public abstract int getBackgroundTextureResourceId();
 
 	public abstract int getPaddleTextureResourceId();
+	
+	public abstract float[] getBallColor();
+	public abstract float[] getSeperatorColor();
 
 	@Override
 	public void onDrawFrame(GL10 unused) {
@@ -171,9 +174,10 @@ public abstract class PongGLRenderer implements GLSurfaceView.Renderer {
 		// topPaddle.setTextureId(R.drawable.paddle_green);
 		topPaddle.draw(mMVPMatrix);
 
+		circle.setColor(getBallColor());
 		circle.draw(mMVPMatrix);
 
-		separator.setColor(new float[] { 0f, 1f, 0f, 1.0f });
+		separator.setColor(getSeperatorColor());
 		separator.draw(mMVPMatrix);
 
 		if (secondRender) {

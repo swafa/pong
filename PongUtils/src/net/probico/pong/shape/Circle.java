@@ -437,5 +437,9 @@ public class Circle {
 	public void setxSpeed(float xSpeed) {
 		this.xSpeed = xSpeed;
 	}
+	
+	public void setColor(float[] color) {
+		this.color = color;
+	}
 
 }
