@@ -29,7 +29,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.probico.multipong"
-    android:versionCode="37"
+    android:versionCode="38"
     android:versionName="1.0" >
 
     <!-- Necessary: to send and receive the data -->
