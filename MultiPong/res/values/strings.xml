@@ -18,5 +18,4 @@
 <resources>
     <string name="app_name">MultiPong</string>
     <string name="title_activity_main">MultiPong</string>
-	<string name="az_appkey">50bc771ead528fffcaa55608f7ecd00f</string>
 </resources>
