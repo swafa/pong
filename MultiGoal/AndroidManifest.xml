@@ -53,24 +53,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!-- Detect app installs. Necessary to control the installs your app generates -->
-        <receiver android:name="com.appszoom.appszoomsdk.AppsZoomPackageAddedReceiver" >
-            <intent-filter>
-                <data android:scheme="package" />
-
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-            </intent-filter>
-        </receiver>
-
-        <!-- Detect the installation of your app and the source. -->
-        <receiver
-            android:name="com.appszoom.appszoomsdk.AppsZoomReferrerReceiver"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />
@@ -103,9 +85,6 @@
             android:name="net.probico.multigoal.GameplayFragment"
             android:label="@string/app_name" >
         </activity>
-        <activity
-            android:name="com.appszoom.appszoomsdk.AppsZoomInterstitialActivity"
-            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>

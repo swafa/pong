@@ -18,6 +18,4 @@
 <resources>
     <string name="app_name">MultiGoal</string>
     <string name="title_activity_main">MultiGoal</string>
-	<string name="az_appkey">MY_AZ_APP_KEY</string>
-    
 </resources>
